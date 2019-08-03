@@ -1,13 +1,27 @@
 extends "res://Fighter.gd"
 
-export (float) var reflexes = 0.5
-export (float) var aggresive = 0.3
+export (float) var reflexes = 0.8
 
 # to dodge...
 # dodge
 var mocho_status = 0
-var next_check = 0
+#var next_check = 0
 var time_next_check = 0.05
+
+# 0 to idle
+# 2 to be alert!
+# 1 to attack
+var status_pattern = [
+	[2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+]
+onready var beats_lenght = len(status_pattern)
 
 func _ready():
 	self.release()
@@ -15,37 +29,20 @@ func _ready():
 func set_mocho_status(mocho_status):
 	self.mocho_status = mocho_status
 
-func _process(dt):
-	pass
-	#if current_status == STATUS.IDLE:
-	#	next_check -= dt
-	#	if next_check <= 0:
-	#		check_mocho()
-	#		next_check += time_next_check
-	# if not doing something:
-		# read environment
-		# make decision
-		# act
-	# else... continue
 
+func check_dodge(chance):
+	if current_status != STATUS.IDLE: return
+	if self.mocho_status != STATUS.TO_HIT: return
+	var value = randf()
+	if chance > value:
+		self.set_status(STATUS.TO_DODGE)
 
-func check_mocho():
-	# depending on the configuration of this bicho...
-	# prevent - attack
-	var chance = randf()
-	match self.mocho_status:
-		STATUS.TO_HIT:
-			if chance < self.reflexes:
-				self.set_status(STATUS.TO_DODGE)
-			else:
-				time_next_check += chance*0.1
-				print('cant')
-		_:
-			if chance < self.reflexes:
-				self.hit()
-				time_next_check += 1
-	
-	pass
-
-func solve_next(tick):
-	pass
+func solve_next(beat, tick):
+	var beat_index = beat%beats_lenght
+	var action = status_pattern[beat_index][tick]
+	if action == 1:
+		self.hit()
+	elif action == 2:
+		self.check_dodge(self.reflexes)
+	elif action == 0:
+		pass

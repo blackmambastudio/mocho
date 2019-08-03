@@ -19,6 +19,10 @@ config/name="mocho"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

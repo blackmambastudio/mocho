@@ -3,14 +3,14 @@ extends Node
 signal SIXTEENTH
 signal SYNC
 
-export(int) var time_signature_top = 4
+#export(int) var time_signature_top = 4
 export(int) var time_signature_botton = 4
 export(float) var  bpm = 136
 
-var beat_count
+#var beat_count
 var beat_interval
 var current_beat
-var current_measure
+#var current_measure
 
 var sixteenth_time
 var current_time = 0
@@ -34,14 +34,16 @@ func _process(delta):
 	current_tick += next_beat
 	if current_tick >= 16:
 		current_tick -= 16
+		current_beat += 1
 
 	if next_beat >= 1:
 		current_time = current_time - (next_beat * sixteenth_time)
 		#print('the sixteenth, remain ', current_time)
-		emit_signal('SIXTEENTH', current_tick)
+		emit_signal('SIXTEENTH', current_beat, current_tick)
 	
 	
 func start():
 	playing = true
+	current_beat = 0
 	current_time = 0
 	current_tick = 0

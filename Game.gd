@@ -93,16 +93,15 @@ func on_monster_updated(status):
 		# Update the GUI
 		$UI.update_health($Mocho.hp)
 
-var next_note = 0
-func on_metronome_note(tick):
+func on_metronome_note(beat, tick):
 	if current_monster:
-		current_monster.solve_next(tick)
+		current_monster.solve_next(beat, tick)
 	if tick == 0 or tick == 1:
 		$Background.color = Color('111111')
 	else:
 		$Background.color = Color('666666')
 	
 	if tick % 4 == 0:
-		$Tempo.text = str(tick/4 + 1) + '/4'
+		$Tempo.text = str(beat) + ': '+str(tick/4 + 1) + '/4'
 	
 	
