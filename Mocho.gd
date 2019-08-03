@@ -4,6 +4,7 @@ func set_status(status):
 	match self.current_status:
 		STATUS.RELEASE, STATUS.STUNNED:
 			$Sprite.set_frame(0)
+			$AnimationPlayer.play("Idle")
 		STATUS.TO_HIT:
 			$Sprite.set_frame(3)
 		STATUS.HIT:
@@ -11,6 +12,7 @@ func set_status(status):
 		STATUS.BLOCK:
 			$Sprite.set_frame(1)
 		STATUS.TO_BLOCK:
+			$AnimationPlayer.stop()
 			$Sprite.set_frame(2)
 		STATUS.DODGE:
 			pass

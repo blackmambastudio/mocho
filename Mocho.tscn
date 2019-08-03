@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Mocho.gd" type="Script" id=2]
 [ext_resource path="res://Assets/arm.png" type="Texture" id=3]
 [ext_resource path="res://Assets/arm_mask.png" type="Texture" id=4]
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 2
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "BlockHit"
 length = 0.3
 tracks/0/type = "value"
@@ -36,8 +36,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0823529 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "GetHit"
+[sub_resource type="Animation" id=3]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -64,7 +63,24 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.294118 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="Mocho" index="0" instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 2, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 10 ), Vector2( 0, 0 ), Vector2( 0, 5 ) ]
+}
+
+[node name="Mocho" instance=ExtResource( 1 )]
 margin_left = 0.0
 margin_top = 0.0
 margin_right = 600.0
@@ -80,7 +96,7 @@ visible = false
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
 light_mask = 2
-material = SubResource( 2 )
+material = SubResource( 1 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 3 )
@@ -97,8 +113,10 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-anims/BlockHit = SubResource( 3 )
-anims/GetHit = SubResource( 1 )
+autoplay = "Idle"
+anims/BlockHit = SubResource( 2 )
+anims/GetHit = SubResource( 3 )
+anims/Idle = SubResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="." index="5"]
 self_modulate = Color( 1, 1, 1, 0 )

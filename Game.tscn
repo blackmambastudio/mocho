@@ -26,8 +26,10 @@ mouse_filter = 2
 color = Color( 0.0392157, 0.0313726, 0.0313726, 1 )
 
 [node name="Dungeon" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 212.0
+margin_right = 812.0
+margin_bottom = 472.0
+mouse_filter = 2
 script = ExtResource( 2 )
 
 [node name="Mocho" parent="." instance=ExtResource( 3 )]
