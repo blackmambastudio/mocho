@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://Monster.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Dungeon.gd" type="Script" id=2]
 [ext_resource path="res://Mocho.tscn" type="PackedScene" id=3]
 [ext_resource path="res://AudioManager.gd" type="Script" id=4]
 [ext_resource path="res://Assets/titulo_mocho.png" type="Texture" id=5]
@@ -23,18 +23,13 @@ color = Color( 0.0392157, 0.0313726, 0.0313726, 1 )
 [node name="Dungeon" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-
-[node name="Monster" parent="." instance=ExtResource( 2 )]
-margin_left = 692.43
-margin_top = 63.9376
-margin_right = 732.43
-margin_bottom = 103.938
+script = ExtResource( 2 )
 
 [node name="Mocho" parent="." instance=ExtResource( 3 )]
-margin_left = 72.0999
-margin_top = 78.9017
-margin_right = 112.1
-margin_bottom = 118.902
+margin_left = 76.181
+margin_top = 334.652
+margin_right = 116.181
+margin_bottom = 374.652
 id = "mocho"
 
 [node name="AudioManager" type="Control" parent="."]
@@ -49,4 +44,8 @@ script = ExtResource( 4 )
 [node name="titulo_mocho" type="Sprite" parent="."]
 position = Vector2( 778.679, 475.638 )
 texture = ExtResource( 5 )
+
+[node name="Kills" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
 

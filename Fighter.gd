@@ -39,7 +39,7 @@ func block():
 	self.set_status(STATUS.TO_BLOCK)
 
 func _ready():
-	pass
+	$HP.text = 'HP: ' + str(self.hp)
 
 func release():
 	self.time_transition = 0
