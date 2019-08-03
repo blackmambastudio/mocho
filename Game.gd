@@ -12,8 +12,21 @@ func _ready():
 	randomize()
 	connect("gui_input", self, "on_input")
 	$AudioManager/MX_InGame.play()
+	$AudioManager/MX_InGame.volume_db = -80
+	
 	$Mocho.connect("STATUS_UPDATED", self, "on_mocho_updated")
 	self.new_monster()
+	$Metronome.connect('SIXTEENTH', self, 'on_metronome_note')
+	$Metronome.connect('SYNC', self, 'on_metronome_sync_start')
+	
+	yield(get_tree().create_timer(2), 'timeout')
+	
+	$Metronome.start()
+	
+	
+func on_metronome_sync_start(time):
+	$AudioManager/MX_InGame.seek(time)
+	$AudioManager/MX_InGame.volume_db = 0
 	
 func new_monster():
 	current_monster = $Dungeon.next_monster()
@@ -79,3 +92,17 @@ func on_monster_updated(status):
 		$Mocho.get_damage(10)
 		# Update the GUI
 		$UI.update_health($Mocho.hp)
+
+var next_note = 0
+func on_metronome_note(tick):
+	if current_monster:
+		current_monster.solve_next(tick)
+	if tick == 0 or tick == 1:
+		$Background.color = Color('111111')
+	else:
+		$Background.color = Color('666666')
+	
+	if tick % 4 == 0:
+		$Tempo.text = str(tick/4 + 1) + '/4'
+	
+	

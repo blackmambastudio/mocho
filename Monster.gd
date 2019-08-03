@@ -16,11 +16,12 @@ func set_mocho_status(mocho_status):
 	self.mocho_status = mocho_status
 
 func _process(dt):
-	if current_status == STATUS.IDLE:
-		next_check -= dt
-		if next_check <= 0:
-			check_mocho()
-			next_check += time_next_check
+	pass
+	#if current_status == STATUS.IDLE:
+	#	next_check -= dt
+	#	if next_check <= 0:
+	#		check_mocho()
+	#		next_check += time_next_check
 	# if not doing something:
 		# read environment
 		# make decision
@@ -44,4 +45,7 @@ func check_mocho():
 				self.hit()
 				time_next_check += 1
 	
+	pass
+
+func solve_next(tick):
 	pass

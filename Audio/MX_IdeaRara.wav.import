@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MX_IdeaRara.wav-a750dda0873a2a8ffc8684deed71881e.sample"
+
+[deps]
+
+source_file="res://Audio/MX_IdeaRara.wav"
+dest_files=[ "res://.import/MX_IdeaRara.wav-a750dda0873a2a8ffc8684deed71881e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=48000.0
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
