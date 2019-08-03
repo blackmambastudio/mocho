@@ -4,7 +4,7 @@
 [ext_resource path="res://Dungeon.gd" type="Script" id=2]
 [ext_resource path="res://Mocho.tscn" type="PackedScene" id=3]
 [ext_resource path="res://AudioManager.gd" type="Script" id=4]
-[ext_resource path="res://Audio/MX_IdeaRara.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/MX_InGame.wav" type="AudioStream" id=5]
 [ext_resource path="res://Audio/SFX_Whoosh.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Audio/SFX_AlienDeath.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Assets/titulo_mocho.png" type="Texture" id=8]
@@ -74,6 +74,7 @@ margin_bottom = 14.0
 
 [node name="Metronome" type="Node" parent="."]
 script = ExtResource( 10 )
+bpm = 154.0
 
 [node name="Tempo" type="Label" parent="."]
 margin_left = 63.9376

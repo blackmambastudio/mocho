@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MX_InGame.wav-72f40c2d83c6de97f5cd11e15ffaa46f.sample"
+
+[deps]
+
+source_file="res://Audio/MX_InGame.wav"
+dest_files=[ "res://.import/MX_InGame.wav-72f40c2d83c6de97f5cd11e15ffaa46f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=48000.0
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
