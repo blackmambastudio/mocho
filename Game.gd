@@ -5,6 +5,7 @@ var pressed = false
 var STATUS = Fighter.STATUS
 
 func _ready():
+	randomize()
 	connect("gui_input", self, "on_input")
 	$Mocho.connect("STATUS_UPDATED", self, "on_mocho_updated")
 	
@@ -27,7 +28,7 @@ func on_mocho_updated(status):
 	match status:
 		STATUS.HIT:
 			$Background.color = Color('669966')
-			$Monster.get_damage(10000)
+			$Monster.get_damage(10)
 		STATUS.IDLE:
 			$Background.color = Color('0a0808')
 		STATUS.TO_HIT:
@@ -39,3 +40,4 @@ func on_mocho_updated(status):
 		STATUS.BLOCK:
 			$Background.color = Color('222249')
 	
+	$Monster.set_mocho_status(status)
