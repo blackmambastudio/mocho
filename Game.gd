@@ -39,7 +39,6 @@ func kill_monster():
 		yield(get_tree().create_timer(2), 'timeout')
 		
 		self.new_monster()
-		
 
 func on_input(Event):
 	if Event is InputEventMouseButton:
@@ -78,3 +77,5 @@ func on_mocho_updated(status):
 func on_monster_updated(status):
 	if status == STATUS.HIT:
 		$Mocho.get_damage(10)
+		# Update the GUI
+		$UI.update_health($Mocho.hp)
