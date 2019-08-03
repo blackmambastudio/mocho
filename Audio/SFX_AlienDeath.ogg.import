@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_AlienDeath.ogg-f22bce8b257bebf611cd178c7c777105.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_AlienDeath.ogg"
+dest_files=[ "res://.import/SFX_AlienDeath.ogg-f22bce8b257bebf611cd178c7c777105.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

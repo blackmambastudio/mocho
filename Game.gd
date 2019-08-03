@@ -1,6 +1,7 @@
 extends Control
 
 var Fighter = preload("res://Fighter.gd")
+onready var alien_death = preload("res://AlienExplosion.tscn")
 var pressed = false
 var STATUS = Fighter.STATUS
 
@@ -23,6 +24,11 @@ func kill_monster():
 	if !current_monster: return
 	current_monster.get_damage(100000)
 	if current_monster.hp < 0:
+		var Death = alien_death.instance()
+		add_child(Death)
+		Death.set_emitting(true)
+		
+		$AudioManager/Alien/SFX_Death.play()
 		current_monster.disconnect("STATUS_UPDATED", self, "on_monster_updated")
 		current_monster.queue_free()
 		current_monster = null
@@ -52,7 +58,7 @@ func on_input(Event):
 func on_mocho_updated(status):
 	match status:
 		STATUS.HIT:
-			$AudioManager/SFX_Whoosh.play()
+			$AudioManager/Mocho/SFX_Whoosh.play()
 			$Background.color = Color('669966')
 			self.kill_monster()
 		STATUS.IDLE:

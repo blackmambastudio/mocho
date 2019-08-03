@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Dungeon.gd" type="Script" id=2]
 [ext_resource path="res://Mocho.tscn" type="PackedScene" id=3]
 [ext_resource path="res://AudioManager.gd" type="Script" id=4]
-[ext_resource path="res://Assets/titulo_mocho.png" type="Texture" id=5]
+[ext_resource path="res://Audio/SFX_Whoosh.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Audio/SFX_AlienDeath.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/titulo_mocho.png" type="Texture" id=7]
 
 [node name="Game" type="Control"]
 margin_right = 1024.0
@@ -37,13 +39,27 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 4 )
 
-[node name="SFX_Whoosh" type="AudioStreamPlayer" parent="AudioManager"]
-
 [node name="MX_InGame" type="AudioStreamPlayer" parent="AudioManager"]
+
+[node name="Mocho" type="Control" parent="AudioManager"]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="SFX_Whoosh" type="AudioStreamPlayer" parent="AudioManager/Mocho"]
+stream = ExtResource( 5 )
+
+[node name="Alien" type="Control" parent="AudioManager"]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="SFX_Death" type="AudioStreamPlayer" parent="AudioManager/Alien"]
+stream = ExtResource( 6 )
 
 [node name="titulo_mocho" type="Sprite" parent="."]
 position = Vector2( 778.679, 475.638 )
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 
 [node name="Kills" type="Label" parent="."]
 margin_right = 40.0
