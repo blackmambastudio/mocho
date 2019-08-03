@@ -29,7 +29,6 @@ func _ready():
 func set_mocho_status(mocho_status):
 	self.mocho_status = mocho_status
 
-
 func check_dodge(chance):
 	if current_status != STATUS.IDLE: return
 	if self.mocho_status != STATUS.TO_HIT: return
@@ -46,3 +45,27 @@ func solve_next(beat, tick):
 		self.check_dodge(self.reflexes)
 	elif action == 0:
 		pass
+
+func set_status(status):
+	match self.current_status:
+		STATUS.RELEASE, STATUS.STUNNED:
+			$Sprite.set_frame(0)
+		STATUS.TO_HIT:
+			$Sprite.set_frame(1)
+		STATUS.HIT:
+			$Sprite.set_frame(2)
+		STATUS.DODGE:
+			# trigger the dogging animation
+			if randi() % 40 < 20:
+				$AnimationPlayer.play("DodgeLeft", -1, 1.5)
+			else:
+				$AnimationPlayer.play("DodgeRight", -1, 1.5)
+	.set_status(status)
+
+func get_damage(damage):
+	.get_damage(damage)
+	if self.damaged:
+		$Sprite.set_frame(3)
+		yield(get_tree().create_timer(0.05), "timeout")
+	else:
+		yield()

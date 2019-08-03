@@ -6,7 +6,7 @@
 _data = [ Vector2( 0, 0.23402 ), 0.0, -0.0984471, 0, 0, Vector2( 0.505912, 0.0228202 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Node2D" type="CPUParticles2D"]
-position = Vector2( 512.336, 275.477 )
+position = Vector2( 300, 262 )
 emitting = false
 amount = 200
 lifetime = 2.0

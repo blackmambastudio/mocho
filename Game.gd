@@ -35,7 +35,8 @@ func new_monster():
 
 func kill_monster():
 	if !current_monster: return
-	current_monster.get_damage(100000)
+	yield(current_monster.get_damage(100000), "completed")
+#	current_monster.get_damage(100000)
 	if current_monster.hp < 0:
 		var Death = alien_death.instance()
 		add_child(Death)

@@ -1,24 +1,58 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Monster.gd" type="Script" id=2]
 [ext_resource path="res://Assets/alien-01.png" type="Texture" id=3]
 
-[node name="Monster" instance=ExtResource( 1 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -187.0
-margin_top = -236.0
-margin_right = 188.0
-margin_bottom = 129.0
+[sub_resource type="Animation" id=1]
+resource_name = "DodgeLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.497065 ),
+"transitions": PoolRealArray( 0.5, 1, 0.5 ),
+"update": 0,
+"values": [ Vector2( 300, 230 ), Vector2( 190, 230 ), Vector2( 300, 230 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "DodgeRight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( -2, 1, -2 ),
+"update": 0,
+"values": [ Vector2( 300, 230 ), Vector2( 410, 230 ), Vector2( 300, 230 ) ]
+}
+
+[node name="Monster" index="0" instance=ExtResource( 1 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
 mouse_filter = 2
 script = ExtResource( 2 )
 id = "monster"
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
+position = Vector2( 300, 230 )
 texture = ExtResource( 3 )
-centered = false
 hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+anims/DodgeLeft = SubResource( 1 )
+anims/DodgeRight = SubResource( 2 )
 
