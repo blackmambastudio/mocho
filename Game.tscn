@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Mocho.gd" type="Script" id=3]
+
+[node name="Game" type="Control"]
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 1023.0 ]
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0392157, 0.0313726, 0.0313726, 1 )
+
+[node name="Dungeon" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Enemy" type="Control" parent="Dungeon"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="Mocho" type="Control" parent="."]
+margin_left = 47.6131
+margin_top = 54.415
+margin_right = 87.6131
+margin_bottom = 94.415
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Mocho"]
+margin_left = 19.0452
+margin_top = 32.649
+margin_right = 108.045
+margin_bottom = 64.649
+text = "asdasd"
+
