@@ -16,3 +16,9 @@ margin_right = 108.045
 margin_bottom = 64.649
 text = "asdasd"
 
+[node name="HP" type="Label" parent="."]
+margin_left = 20.4056
+margin_top = 59.8564
+margin_right = 60.4056
+margin_bottom = 73.8564
+

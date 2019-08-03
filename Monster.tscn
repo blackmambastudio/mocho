@@ -7,10 +7,3 @@
 script = ExtResource( 2 )
 id = "monster"
 
-[node name="HP" type="Label" parent="." index="1"]
-margin_left = 20.4056
-margin_top = 59.8564
-margin_right = 60.4056
-margin_bottom = 73.8564
-text = "HP: 0"
-

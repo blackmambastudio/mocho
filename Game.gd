@@ -9,6 +9,7 @@ func _ready():
 	connect("gui_input", self, "on_input")
 	$AudioManager/MX_InGame.play()
 	$Mocho.connect("STATUS_UPDATED", self, "on_mocho_updated")
+	$Monster.connect("STATUS_UPDATED", self, "on_monster_updated")
 	
 
 func on_input(Event):
@@ -30,7 +31,7 @@ func on_mocho_updated(status):
 		STATUS.HIT:
 			$AudioManager/SFX_Whoosh.play()
 			$Background.color = Color('669966')
-			$Monster.get_damage(10)
+			$Monster.get_damage(100000)
 		STATUS.IDLE:
 			$Background.color = Color('0a0808')
 		STATUS.TO_HIT:
@@ -43,3 +44,7 @@ func on_mocho_updated(status):
 			$Background.color = Color('222249')
 	
 	$Monster.set_mocho_status(status)
+
+func on_monster_updated(status):
+	if status == STATUS.HIT:
+		$Mocho.get_damage(10)

@@ -4,7 +4,7 @@
 [ext_resource path="res://Monster.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mocho.tscn" type="PackedScene" id=3]
 [ext_resource path="res://AudioManager.gd" type="Script" id=4]
-[ext_resource path="res://Audio/SFX_Whoosh.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/titulo_mocho.png" type="Texture" id=5]
 
 [node name="Game" type="Control"]
 margin_right = 1024.0
@@ -43,8 +43,10 @@ margin_bottom = 40.0
 script = ExtResource( 4 )
 
 [node name="SFX_Whoosh" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource( 5 )
-pitch_scale = 0.9
 
 [node name="MX_InGame" type="AudioStreamPlayer" parent="AudioManager"]
+
+[node name="titulo_mocho" type="Sprite" parent="."]
+position = Vector2( 778.679, 475.638 )
+texture = ExtResource( 5 )
 

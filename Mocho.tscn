@@ -5,9 +5,4 @@
 
 [node name="Mocho" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-time_to_block = 0.2
-time_release = 0.1
-time_to_hit = 0.25
-time_hit = 0.06
-time_blocking = 0.1
 

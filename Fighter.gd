@@ -81,7 +81,6 @@ func _process(dt):
 				self.set_status(STATUS.BLOCK)
 				# do the block!!!
 		STATUS.BLOCK:
-			print('BLOCKING!!!')
 			if self.block_released and self.time_transition >= self.time_blocking:
 				self.release()
 		STATUS.STUNNED:
@@ -94,16 +93,22 @@ func _process(dt):
 				self.release()
 
 func get_damage(damage):
+	if self.current_status == STATUS.BLOCK:
+		damage = damage*0.1
+		if self.block_released:
+			print('parry!!!!!')
+		
 	if self.current_status == STATUS.TO_DODGE:
 		self.time_transition = 0
 		set_status(STATUS.DODGE)
 		return
 
 	self.hp -= damage
+	$HP.text = 'HP: ' + str(self.hp)
 	if self.hp <= 0:
 		print('dead!!!')
 		set_status(STATUS.DEAD)
-	else:
+	elif self.current_status != STATUS.BLOCK:
 		self.time_transition = 0
 		set_status(STATUS.STUNNED)
 		
