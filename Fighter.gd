@@ -27,6 +27,8 @@ export (float) var hp = 100
 
 var time_transition = 0
 var block_released = false
+var damaged = false
+var parried = false
 
 func hit():
 	if self.current_status != STATUS.IDLE: return
@@ -93,9 +95,12 @@ func _process(dt):
 				self.release()
 
 func get_damage(damage):
+	damaged = false
+	parried = false
 	if self.current_status == STATUS.BLOCK:
 		damage = damage*0.1
 		if self.block_released:
+			parried = true
 			print('parry!!!!!')
 		
 	if self.current_status == STATUS.TO_DODGE:
@@ -104,6 +109,7 @@ func get_damage(damage):
 		return
 
 	self.hp -= damage
+	damaged = true
 	$HP.text = 'HP: ' + str(self.hp)
 	if self.hp <= 0:
 		print('dead!!!')
