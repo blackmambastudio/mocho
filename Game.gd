@@ -7,6 +7,7 @@ var STATUS = Fighter.STATUS
 func _ready():
 	randomize()
 	connect("gui_input", self, "on_input")
+	$AudioManager/MX_InGame.play()
 	$Mocho.connect("STATUS_UPDATED", self, "on_mocho_updated")
 	
 
@@ -27,6 +28,7 @@ func on_input(Event):
 func on_mocho_updated(status):
 	match status:
 		STATUS.HIT:
+			$AudioManager/SFX_Whoosh.play()
 			$Background.color = Color('669966')
 			$Monster.get_damage(10)
 		STATUS.IDLE:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Monster.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mocho.tscn" type="PackedScene" id=3]
+[ext_resource path="res://AudioManager.gd" type="Script" id=4]
 
 [node name="Game" type="Control"]
 margin_right = 1024.0
@@ -34,4 +35,13 @@ margin_top = 78.9017
 margin_right = 112.1
 margin_bottom = 118.902
 id = "mocho"
+
+[node name="AudioManager" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+
+[node name="SFX_Whoosh" type="AudioStreamPlayer" parent="AudioManager"]
+
+[node name="MX_InGame" type="AudioStreamPlayer" parent="AudioManager"]
 
