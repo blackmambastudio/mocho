@@ -1,6 +1,8 @@
 extends Control
 
+var Fighter = preload("res://Fighter.gd")
 var pressed = false
+var STATUS = Fighter.STATUS
 
 func _ready():
 	connect("gui_input", self, "on_input")
@@ -22,14 +24,18 @@ func on_input(Event):
 	
 
 func on_mocho_updated(status):
-	if status == 'HIT':
-		$Background.color = Color('669966')
-	elif status == 'IDLE':
-		$Background.color = Color('0a0808')
-	elif status == 'TO_HIT' or status == 'RELEASE':
-		$Background.color = Color('2a2828')
-	elif status == 'TO_BLOCK':
-		$Background.color = Color('2a2828')
-	elif status == 'BLOCK':
-		$Background.color = Color('222249')
+	match status:
+		STATUS.HIT:
+			$Background.color = Color('669966')
+			$Monster.get_damage(10000)
+		STATUS.IDLE:
+			$Background.color = Color('0a0808')
+		STATUS.TO_HIT:
+			$Background.color = Color('2a2828')
+		STATUS.RELEASE:
+			$Background.color = Color('2a2828')
+		STATUS.TO_BLOCK:
+			$Background.color = Color('2a2828')
+		STATUS.BLOCK:
+			$Background.color = Color('222249')
 	
