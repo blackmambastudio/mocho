@@ -70,5 +70,6 @@ func alien_dodge(monster_type):
 	$Alien/SFX_Move.playsound()
 
 func alien_death(monster_type):
-	
 	$Alien/SFX_Death.play()
+
+
