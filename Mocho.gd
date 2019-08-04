@@ -2,7 +2,7 @@ extends "res://Fighter.gd"
 
 func set_status(status):
 	match status:
-		STATUS.RELEASE, STATUS.STUNNED:
+		STATUS.IDLE, STATUS.RELEASE:
 			$Sprite.set_frame(0)
 			$AnimationPlayer.play("Idle")
 		STATUS.TO_HIT:
@@ -10,12 +10,14 @@ func set_status(status):
 		STATUS.HIT:
 			$Sprite.set_frame(4)
 		STATUS.BLOCK:
-			$Sprite.set_frame(1)
+			$Sprite.set_frame(2)
 		STATUS.TO_BLOCK:
 			$AnimationPlayer.stop()
-			$Sprite.set_frame(2)
+			$Sprite.set_frame(1)
 		STATUS.DODGE:
 			pass
+		STATUS.STUNNED:
+			$Sprite.set_frame(5)
 	.set_status(status)
 
 func get_damage(damage):

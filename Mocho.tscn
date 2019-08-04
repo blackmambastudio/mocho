@@ -102,7 +102,7 @@ z_index = 2
 z_as_relative = false
 texture = ExtResource( 3 )
 centered = false
-hframes = 5
+hframes = 6
 
 [node name="Light2D" type="Light2D" parent="." index="3"]
 texture = ExtResource( 4 )
