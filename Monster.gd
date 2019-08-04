@@ -68,7 +68,7 @@ func solve_next(beat, tick):
 
 func set_status(status):
 	match status:
-		STATUS.RELEASE, STATUS.STUNNED:
+		STATUS.IDLE, STATUS.STUNNED:
 			$Sprite.set_frame(0)
 		STATUS.TO_HIT:
 			$Sprite.set_frame(1)

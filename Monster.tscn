@@ -36,7 +36,7 @@ tracks/0/keys = {
 "values": [ Vector2( 300, 230 ), Vector2( 410, 230 ), Vector2( 300, 230 ) ]
 }
 
-[node name="Monster" index="0" instance=ExtResource( 1 )]
+[node name="Monster" instance=ExtResource( 1 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.0
@@ -46,8 +46,8 @@ margin_bottom = 0.0
 mouse_filter = 2
 script = ExtResource( 2 )
 id = "monster"
-time_release = 0.15
-time_to_hit = 0.3
+time_release = 0.35
+time_to_hit = 0.5
 
 [node name="Label" parent="." index="0"]
 visible = false

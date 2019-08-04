@@ -37,9 +37,12 @@ anchor_right = 0.5
 margin_left = -300.0
 margin_right = 300.0
 id = "mocho"
-time_to_block = 0.2
+time_to_block = 0.1
+time_release = 0.08
+time_to_hit = 0.15
+time_stunned = 0.1
 time_dodge = 0.1
-time_blocking = 0.1
+time_blocking = 0.45
 hp = 100.0
 
 [node name="AudioManager" type="Control" parent="."]

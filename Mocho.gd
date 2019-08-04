@@ -2,7 +2,7 @@ extends "res://Fighter.gd"
 
 func set_status(status):
 	match status:
-		STATUS.IDLE, STATUS.RELEASE:
+		STATUS.IDLE:
 			$Sprite.set_frame(0)
 			$AnimationPlayer.play("Idle")
 		STATUS.TO_HIT:
