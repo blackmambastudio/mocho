@@ -83,6 +83,8 @@ func on_mocho_updated(status):
 			pass
 		STATUS.BLOCK:
 			pass
+		STATUS.DEAD:
+			$Background/AnimationPlayer.play("Fall")
 	
 	if current_monster:
 		current_monster.set_mocho_status(status)

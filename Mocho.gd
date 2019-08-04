@@ -4,6 +4,7 @@ extends "res://Fighter.gd"
 func set_status(status):
 	match status:
 		STATUS.IDLE, STATUS.CANCEL:
+			$ColorRect.self_modulate.a = 0
 			$Sprite.set_frame(0)
 			$AnimationPlayer.play("Idle")
 		STATUS.TO_HIT:
@@ -27,6 +28,8 @@ func get_damage(damage):
 	if self.damaged:
 		if not self.current_status == STATUS.BLOCK:
 			$AnimationPlayer.play("GetHit", -1, 2.0)
+		elif self.parried:
+			$AnimationPlayer.play("ParryHit", -1, 1.3)
 		else:
 			$AnimationPlayer.play("BlockHit", -1, 1.3)
 
