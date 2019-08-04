@@ -49,6 +49,12 @@ id = "monster"
 time_release = 0.15
 time_to_hit = 0.3
 
+[node name="Label" parent="." index="0"]
+visible = false
+
+[node name="HP" parent="." index="1"]
+visible = false
+
 [node name="Sprite" type="Sprite" parent="." index="2"]
 position = Vector2( 300, 230 )
 texture = ExtResource( 3 )

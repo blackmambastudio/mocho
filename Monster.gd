@@ -21,9 +21,12 @@ var status_pattern = [
 	[1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
 	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
 ]
+
 onready var beats_lenght = len(status_pattern)
+onready var approaching = 0
 
 func _ready():
+	$Sprite.set_scale(Vector2(0, 0))
 	self.release()
 
 func set_mocho_status(mocho_status):
@@ -38,7 +41,23 @@ func check_dodge(chance):
 		self.set_status(STATUS.TO_DODGE)
 
 func solve_next(beat, tick):
-	var beat_index = beat%beats_lenght
+	var beat_index = beat % beats_lenght
+	if approaching >= 0:
+		approaching += 1
+		match approaching:
+			1:
+				$Sprite.set_scale(Vector2(0.3, 0.3))
+				return
+			17:
+				$Sprite.set_scale(Vector2(0.7, 0.7))
+				return
+			33:
+				$Sprite.set_scale(Vector2(1.2, 1.2))
+				return
+			41:
+				self.approaching = -1
+			_:
+				return
 	var action = status_pattern[beat_index][tick]
 	if action == 1:
 		self.hit()
@@ -64,7 +83,9 @@ func set_status(status):
 	.set_status(status)
 
 func get_damage(damage):
-	print('>> ', STATUS.keys()[self.current_status])
+	if approaching >= 0:
+		yield()
+		return
 	.get_damage(damage)
 	
 	if self.damaged:

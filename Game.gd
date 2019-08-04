@@ -22,12 +22,11 @@ func _ready():
 	yield(get_tree().create_timer(2), 'timeout')
 	
 	$Metronome.start()
-	
-	
+
 func on_metronome_sync_start(time):
 	$AudioManager/MX_InGame.seek(time)
 	$AudioManager/MX_InGame.volume_db = 0
-	
+
 func new_monster():
 	current_monster = $Dungeon.next_monster()
 	add_child(current_monster)
