@@ -6,6 +6,9 @@ func _ready():
 func mocho_hurt():
 	$Mocho/SFX_Hurt.playsound()
 
+func mocho_defend():
+	$Mocho/SFX_LowWhoosh.play()
+
 func mocho_block():
 	$Mocho/SFX_Block.playsound()
 

@@ -99,6 +99,7 @@ script = ExtResource( 5 )
 
 [node name="MX_InGame" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource( 6 )
+bus = "Music"
 
 [node name="Mocho" type="Control" parent="AudioManager"]
 margin_right = 40.0
@@ -107,10 +108,17 @@ margin_bottom = 40.0
 [node name="SFX_Whoosh" type="AudioStreamPlayer" parent="AudioManager/Mocho"]
 stream = ExtResource( 7 )
 volume_db = -4.0
+bus = "SFX"
+
+[node name="SFX_LowWhoosh" type="AudioStreamPlayer" parent="AudioManager/Mocho"]
+volume_db = -6.0
+pitch_scale = 0.7
+bus = "SFX"
 
 [node name="SFX_Attk" parent="AudioManager/Mocho" instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 318.239, 286.852 )
+Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Mocho/SFX_Attk" instance=ExtResource( 9 )]
 stream = ExtResource( 10 )
@@ -122,6 +130,7 @@ stream = ExtResource( 11 )
 editor/display_folded = true
 position = Vector2( 318.239, 286.852 )
 Volume = 4.0
+Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Mocho/SFX_Hurt" instance=ExtResource( 9 )]
 stream = ExtResource( 12 )
@@ -132,6 +141,14 @@ stream = ExtResource( 13 )
 [node name="SFX_Block" parent="AudioManager/Mocho" instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 318.239, 286.852 )
+Volume = 2.0
+Pitch = -2.0
+Bus = "SFX"
+RandomVolume = true
+minVolume = -2.0
+maxVolume = 1.0
+RandomPitch = true
+minPitch = -3.0
 
 [node name="SoundObject" parent="AudioManager/Mocho/SFX_Block" instance=ExtResource( 9 )]
 stream = ExtResource( 14 )
@@ -140,6 +157,7 @@ stream = ExtResource( 14 )
 editor/display_folded = true
 position = Vector2( 318.239, 286.852 )
 stream = ExtResource( 15 )
+Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Mocho/SFX_Stunned" instance=ExtResource( 9 )]
 stream = ExtResource( 14 )
@@ -150,10 +168,12 @@ margin_bottom = 40.0
 
 [node name="SFX_Death" type="AudioStreamPlayer" parent="AudioManager/Alien"]
 stream = ExtResource( 16 )
+bus = "SFX"
 
 [node name="SFX_Prepare" parent="AudioManager/Alien" instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
+Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Alien/SFX_Prepare" instance=ExtResource( 9 )]
 stream = ExtResource( 17 )
@@ -165,7 +185,7 @@ stream = ExtResource( 18 )
 [node name="SFX_Dodge" parent="AudioManager/Alien" instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
-Volume = -6.0
+Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Alien/SFX_Dodge" instance=ExtResource( 9 )]
 stream = ExtResource( 19 )
@@ -177,7 +197,8 @@ stream = ExtResource( 20 )
 [node name="SFX_Attk" parent="AudioManager/Alien" instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
-Volume = -3.0
+Volume = -2.0
+Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Alien/SFX_Attk" instance=ExtResource( 9 )]
 stream = ExtResource( 21 )
@@ -192,13 +213,17 @@ stream = ExtResource( 23 )
 [node name="SFX_Slash" parent="AudioManager/Alien" instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
-Volume = -1.0
+Volume = 1.0
+Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Alien/SFX_Slash" instance=ExtResource( 9 )]
 stream = ExtResource( 24 )
 
 [node name="SFX_Move" parent="AudioManager/Alien" instance=ExtResource( 8 )]
+editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
+Volume = 2.0
+Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Alien/SFX_Move" instance=ExtResource( 9 )]
 stream = ExtResource( 25 )

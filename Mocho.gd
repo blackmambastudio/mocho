@@ -62,6 +62,7 @@ func set_status(status):
 		STATUS.HIT:
 			$Sprite.set_frame(4)
 		STATUS.BLOCK:
+			AM.mocho_defend()
 			$Sprite.set_frame(2)
 			print(self.time_blocking)
 		STATUS.TO_BLOCK:

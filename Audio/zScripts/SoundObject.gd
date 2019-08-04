@@ -30,7 +30,7 @@ var Name
 
 
 func _ready():
-	
+	set_bus(Bus)
 	Pitch =  Pitch/24
 	minPitch = minPitch/24
 	maxPitch = maxPitch/24

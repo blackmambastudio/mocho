@@ -4,6 +4,9 @@ var index_sound = -1
 var select_sound
 var canplay
 
+func _ready():
+	for sounds in get_children():
+		sounds.set_bus(Bus)
 #func _process(delta):
 #	if Input.is_action_pressed("ui_right"):
 #		if canplay == true:
@@ -12,6 +15,7 @@ var canplay
 #	if Input.is_action_just_released("ui_right"):
 #		canplay = true
 #	
+	pass
 
 func playsound():
 	
