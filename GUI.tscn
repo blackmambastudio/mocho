@@ -9,11 +9,11 @@
 [ext_resource path="res://Assets/FredokaOne-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/title.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 48
 font_data = ExtResource( 7 )
 
@@ -42,14 +42,14 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.9, 1.3 ),
 "transitions": PoolRealArray( 1, 2, 1 ),
 "update": 0,
-"values": [ Vector2( -650, 220 ), Vector2( -650, 220 ), Vector2( 0, 220 ) ]
+"values": [ Vector2( -650, 472 ), Vector2( -650, 472 ), Vector2( 0, 472 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("StartContainer/TutorialContainer:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0, 1.4, 1.8 ),
 "transitions": PoolRealArray( 1, 2, 1 ),
@@ -147,7 +147,7 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 112.0
 margin_bottom = 112.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.666667, 0.368627, 1 )
 custom_colors/font_color_shadow = Color( 0.552941, 0.411765, 0.478431, 1 )
 custom_constants/shadow_offset_x = 2
@@ -178,7 +178,7 @@ margin_left = -204.5
 margin_top = -29.5
 margin_right = 204.5
 margin_bottom = 29.5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.666667, 0.368627, 1 )
 text = "punch to restart"
 
@@ -198,15 +198,14 @@ margin_bottom = -98.0
 texture = ExtResource( 8 )
 
 [node name="StartContainer" type="Control" parent="GUI/StartContainer"]
-editor/display_folded = true
 margin_left = -650.0
-margin_top = 220.0
+margin_top = 480.0
 margin_right = -50.0
-margin_bottom = 324.0
+margin_bottom = 608.0
 
 [node name="ColorRect" type="ColorRect" parent="GUI/StartContainer/StartContainer"]
 margin_right = 600.0
-margin_bottom = 104.0
+margin_bottom = 128.0
 mouse_filter = 2
 color = Color( 0.329412, 0.305882, 0.407843, 1 )
 
@@ -219,7 +218,7 @@ margin_left = -231.0
 margin_top = -29.5
 margin_right = 231.0
 margin_bottom = 29.5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.831373, 0.639216, 1 )
 text = "punch (K) to start"
 align = 1
@@ -247,7 +246,7 @@ margin_left = -231.0
 margin_top = -29.5
 margin_right = 231.0
 margin_bottom = 29.5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.831373, 0.639216, 1 )
 text = "block (D) to learn"
 align = 1

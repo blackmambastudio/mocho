@@ -14,6 +14,7 @@ time_dodge = 0.15
 time_blocking = 0.2
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 217.66
 margin_top = 376.824
 margin_right = 306.66
@@ -21,6 +22,7 @@ margin_bottom = 408.824
 text = "asdasd"
 
 [node name="HP" type="Label" parent="."]
+visible = false
 margin_left = 20.4056
 margin_top = 59.8564
 margin_right = 60.4056

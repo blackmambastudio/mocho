@@ -64,6 +64,7 @@ __meta__ = {
 }
 
 [node name="Background" type="ColorRect" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -98,6 +99,7 @@ time_dodge = 0.1
 time_blocking = 0.5
 
 [node name="AudioManager" type="Control" parent="."]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 5 )
@@ -405,6 +407,7 @@ position = Vector2( 778.679, 475.638 )
 texture = ExtResource( 36 )
 
 [node name="Kills" type="Label" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 
@@ -415,12 +418,18 @@ script = ExtResource( 38 )
 bpm = 154.0
 
 [node name="Tempo" type="Label" parent="."]
+visible = false
 margin_left = 63.9376
 margin_top = 175.488
 margin_right = 103.938
 margin_bottom = 189.488
 
 [node name="Foreground" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 39 )
+
+[node name="Foreground2" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 39 )
