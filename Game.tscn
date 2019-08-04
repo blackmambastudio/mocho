@@ -40,6 +40,7 @@ id = "mocho"
 time_to_block = 0.2
 time_dodge = 0.1
 time_blocking = 0.1
+hp = 100.0
 
 [node name="AudioManager" type="Control" parent="."]
 editor/display_folded = true
