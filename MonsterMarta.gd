@@ -18,3 +18,9 @@ func _ready():
 		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 	]
 	beats_lenght = len(status_pattern)
+
+func set_status(status):
+	match status:
+		STATUS.HIT:
+			$AnimationPlayer.play("Spit")
+	.set_status(status)
