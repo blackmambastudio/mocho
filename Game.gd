@@ -42,6 +42,7 @@ func kill_monster():
 	if !current_monster: return
 	yield(current_monster.get_damage(100000), "completed")
 	$Mocho.recover_stamina_by_kill()
+	$UI.update_health($Mocho.hp)
 #	current_monster.get_damage(100000)
 	if current_monster.hp < 0:
 		var Death = alien_death.instance()

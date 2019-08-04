@@ -14,8 +14,11 @@ var stm_min_to_hit = 10
 var stm_limit_bad_blocking = 15
 var stm_damage_bad_blocking_factor = 2
 
+onready var original_time_to_hit = time_to_hit
+
 func _ready():
 	AM = get_node("../AudioManager")
+	self.parried = false
 
 func hit():
 	if stamina < stm_min_to_hit: return
@@ -44,6 +47,13 @@ func recover_stamina():
 
 func recover_stamina_by_kill():
 	self.add_stamina(stm_recover_hit)
+	if self.parried:
+		self.parried = false
+		self.hp += 10
+	else:
+		self.hp += 2
+	if self.hp > 100:
+		self.hp = 100
 
 func update_applied_damage(damage):
 	if self.stamina < stm_limit_bad_blocking:
@@ -73,6 +83,7 @@ func set_status(status):
 			$AnimationPlayer.play("ParryHit", -1, 1.3)
 		STATUS.TO_HIT:
 			self.add_stamina(stm_cost_hit)
+			self.time_to_hit = original_time_to_hit - (100-hp)/1000
 			$Sprite.set_frame(3)
 		STATUS.HIT:
 			$Sprite.set_frame(4)
