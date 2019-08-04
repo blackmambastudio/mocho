@@ -89,7 +89,7 @@ func on_mocho_updated(status):
 
 func on_monster_updated(status):
 	if status == STATUS.HIT:
-		$Mocho.get_damage(10)
+		$Mocho.get_damage(current_monster.damage)
 		# Update the GUI
 		$UI.update_health($Mocho.hp)
 

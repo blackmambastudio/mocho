@@ -42,7 +42,7 @@ time_release = 0.08
 time_to_hit = 0.15
 time_stunned = 0.1
 time_dodge = 0.1
-time_blocking = 0.45
+time_blocking = 0.5
 hp = 100.0
 
 [node name="AudioManager" type="Control" parent="."]

@@ -36,10 +36,11 @@ func set_mocho_status(mocho_status):
 
 func check_dodge(chance):
 	if current_status != STATUS.IDLE: return
-	if self.mocho_status != STATUS.TO_HIT: return
+	if self.mocho_status != STATUS.TO_HIT and self.mocho_status != STATUS.CANCEL : return
 	var value = randf()
-	print(value)
+	print("to dodge ", value)
 	if chance > value:
+		print("should dodge ")
 		self.set_status(STATUS.TO_DODGE)
 
 func solve_next(beat, tick):

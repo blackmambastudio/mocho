@@ -1,8 +1,9 @@
 extends "res://Fighter.gd"
 
+
 func set_status(status):
 	match status:
-		STATUS.IDLE:
+		STATUS.IDLE, STATUS.CANCEL:
 			$Sprite.set_frame(0)
 			$AnimationPlayer.play("Idle")
 		STATUS.TO_HIT:
@@ -11,6 +12,7 @@ func set_status(status):
 			$Sprite.set_frame(4)
 		STATUS.BLOCK:
 			$Sprite.set_frame(2)
+			print(self.time_blocking)
 		STATUS.TO_BLOCK:
 			$AnimationPlayer.stop()
 			$Sprite.set_frame(1)

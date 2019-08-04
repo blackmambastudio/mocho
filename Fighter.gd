@@ -1,7 +1,7 @@
 extends Control
 
 signal STATUS_UPDATED
-enum STATUS { IDLE, TO_BLOCK, BLOCK, RELEASE, TO_HIT, HIT, DEAD, STUNNED, TO_DODGE, DODGE, PARRY }
+enum STATUS { IDLE, TO_BLOCK, BLOCK, RELEASE, TO_HIT, HIT, DEAD, STUNNED, TO_DODGE, DODGE, PARRY, CANCEL }
 var current_status = STATUS.IDLE
 # IDLE - TO-BLOCK - BLOCK - RELEASE - IDLE - TO-HIT - HIT
 #     ttb         tb     tr         ti     tth      th
@@ -22,8 +22,11 @@ export (float) var time_hit = 0.060
 export (float) var time_stunned = 0.200
 export (float) var time_dodge = 0.100
 
+export (float) var time_cancel = 0.1
+
 export (float) var time_blocking = 0.1
 export (float) var hp = 100
+export (int) var damage = 5
 
 var time_transition = 0
 var block_released = false
@@ -36,6 +39,11 @@ func hit():
 	self.set_status(STATUS.TO_HIT)
 
 func block():
+	if self.current_status == STATUS.TO_HIT:
+		print('cancel')
+		self.time_transition = 0
+		self.set_status(STATUS.CANCEL)
+		return
 	if self.current_status != STATUS.IDLE: return
 	self.time_transition = 0
 	self.set_status(STATUS.TO_BLOCK)
@@ -87,6 +95,10 @@ func _process(dt):
 				self.release()
 		STATUS.STUNNED:
 			if self.time_transition >= self.time_stunned:
+				self.time_transition = 0
+				self.set_status(STATUS.IDLE)
+		STATUS.CANCEL:
+			if self.time_transition >= self.time_cancel:
 				self.time_transition = 0
 				self.set_status(STATUS.IDLE)
 		STATUS.DODGE:
