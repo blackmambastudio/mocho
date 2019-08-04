@@ -47,7 +47,7 @@ mouse_filter = 2
 script = ExtResource( 2 )
 id = "monster"
 time_release = 0.35
-time_to_hit = 0.5
+time_to_hit = 0.48
 
 [node name="Label" parent="." index="0"]
 visible = false

@@ -1,7 +1,7 @@
 extends Control
 
 signal STATUS_UPDATED
-enum STATUS { IDLE, TO_BLOCK, BLOCK, RELEASE, TO_HIT, HIT, DEAD, STUNNED, TO_DODGE, DODGE }
+enum STATUS { IDLE, TO_BLOCK, BLOCK, RELEASE, TO_HIT, HIT, DEAD, STUNNED, TO_DODGE, DODGE, PARRY }
 var current_status = STATUS.IDLE
 # IDLE - TO-BLOCK - BLOCK - RELEASE - IDLE - TO-HIT - HIT
 #     ttb         tb     tr         ti     tth      th
@@ -61,14 +61,14 @@ func set_status(status):
 func _process(dt):
 	self.time_transition += dt
 	match self.current_status:
-		STATUS.TO_HIT:
+		STATUS.TO_HIT, STATUS.PARRY:
 			if self.time_transition >= self.time_to_hit:
 				self.time_transition = 0
 				self.set_status(STATUS.HIT)
 				# do the hit!!!
+		
 		STATUS.HIT:
 			if self.time_transition >= self.time_hit:
-				self.time_transition = 0
 				self.release()
 		STATUS.RELEASE:
 			if self.time_transition >= self.time_release:
@@ -91,7 +91,6 @@ func _process(dt):
 				self.set_status(STATUS.IDLE)
 		STATUS.DODGE:
 			if self.time_transition >= self.time_dodge:
-				self.time_transition = 0
 				self.release()
 
 func get_damage(damage):
@@ -102,6 +101,9 @@ func get_damage(damage):
 		if self.block_released:
 			parried = true
 			print('parry!!!!!')
+			self.time_transition -= 0.2
+			self.set_status(STATUS.PARRY)
+			return
 		
 	if self.current_status == STATUS.TO_DODGE:
 		self.time_transition = 0

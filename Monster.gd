@@ -2,11 +2,13 @@ extends "res://Fighter.gd"
 
 export (float) var reflexes = 0.95
 
-# to dodge...
-# dodge
 var mocho_status = 0
-#var next_check = 0
-var time_next_check = 0.05
+
+# times to hit
+# 0.48 - 0.4 
+# 
+#
+#
 
 # 0 to idle
 # 2 to be alert!

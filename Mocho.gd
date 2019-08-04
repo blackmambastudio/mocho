@@ -28,6 +28,7 @@ func get_damage(damage):
 		else:
 			$AnimationPlayer.play("BlockHit", -1, 1.3)
 
+#warning-ignore:unused_argument
 func _process(delta):
 	if Input.is_action_just_pressed("hit"):
 		self.hit()
