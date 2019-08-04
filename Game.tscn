@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Assets/fondo.jpg" type="Texture" id=2]
@@ -7,28 +7,34 @@
 [ext_resource path="res://AudioManager.gd" type="Script" id=5]
 [ext_resource path="res://Audio/MX_InGame.wav" type="AudioStream" id=6]
 [ext_resource path="res://Audio/SFX_Whoosh.ogg" type="AudioStream" id=7]
-[ext_resource path="res://Audio/zDevices/RandomTool.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Audio/zDevices/SoundObject.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Audio/SFX_MochoAttk_01.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Audio/SFX_MochoAttk_02.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Audio/SFX_MochoHurt_01.ogg" type="AudioStream" id=12]
-[ext_resource path="res://Audio/SFX_MochoHurt_02.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Audio/SFX_MochoBlock.ogg" type="AudioStream" id=14]
-[ext_resource path="res://Audio/SFX_MochoExhaust.ogg" type="AudioStream" id=15]
-[ext_resource path="res://Audio/SFX_AlienDeath.ogg" type="AudioStream" id=16]
-[ext_resource path="res://Audio/SFX_AlienPrepare_01.ogg" type="AudioStream" id=17]
-[ext_resource path="res://Audio/SFX_AlienPrepare_02.ogg" type="AudioStream" id=18]
-[ext_resource path="res://Audio/SFX_AlienDodge_01.ogg" type="AudioStream" id=19]
-[ext_resource path="res://Audio/SFX_AlienDodge_02.ogg" type="AudioStream" id=20]
-[ext_resource path="res://Audio/SFX_AlienAttack_01.ogg" type="AudioStream" id=21]
-[ext_resource path="res://Audio/SFX_AlienAttack_02.ogg" type="AudioStream" id=22]
-[ext_resource path="res://Audio/SFX_AlienAttack_03.ogg" type="AudioStream" id=23]
-[ext_resource path="res://Audio/SFX_SlashAttk.ogg" type="AudioStream" id=24]
-[ext_resource path="res://Audio/SFX_Dodge.ogg" type="AudioStream" id=25]
-[ext_resource path="res://Assets/titulo_mocho.png" type="Texture" id=26]
-[ext_resource path="res://GUI.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Metronome.gd" type="Script" id=28]
-[ext_resource path="res://Assets/arbol_frente.png" type="Texture" id=29]
+[ext_resource path="res://Audio/SFX_BlockWhoosh.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Audio/zDevices/RandomTool.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Audio/zDevices/SoundObject.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Audio/SFX_MochoAttk_01.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Audio/SFX_MochoAttk_02.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Audio/SFX_MochoHurt_01.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Audio/SFX_MochoHurt_02.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Audio/SFX_MochoBlock.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Audio/SFX_BlockGrunt_01.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Audio/SFX_BlockGrunt_02.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Audio/SFX_MochoExhaust.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Audio/SFX_Parry.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Audio/SFX_MochoDeath_01.ogg" type="AudioStream" id=20]
+[ext_resource path="res://Audio/SFX_MochoDeath_02.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Audio/SFX_AlienDeath.ogg" type="AudioStream" id=22]
+[ext_resource path="res://Audio/SFX_AlienPrepare_01.ogg" type="AudioStream" id=23]
+[ext_resource path="res://Audio/SFX_AlienPrepare_02.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Audio/SFX_AlienDodge_01.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Audio/SFX_AlienDodge_02.ogg" type="AudioStream" id=26]
+[ext_resource path="res://Audio/SFX_AlienAttack_01.ogg" type="AudioStream" id=27]
+[ext_resource path="res://Audio/SFX_AlienAttack_02.ogg" type="AudioStream" id=28]
+[ext_resource path="res://Audio/SFX_AlienAttack_03.ogg" type="AudioStream" id=29]
+[ext_resource path="res://Audio/SFX_SlashAttk.ogg" type="AudioStream" id=30]
+[ext_resource path="res://Audio/SFX_Dodge.ogg" type="AudioStream" id=31]
+[ext_resource path="res://Assets/titulo_mocho.png" type="Texture" id=32]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Metronome.gd" type="Script" id=34]
+[ext_resource path="res://Assets/arbol_frente.png" type="Texture" id=35]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fall"
@@ -88,10 +94,10 @@ time_dodge = 0.1
 time_blocking = 0.5
 
 [node name="AudioManager" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 5 )
+cutoff = 900.0
 
 [node name="MX_InGame" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource( 6 )
@@ -104,38 +110,38 @@ margin_bottom = 40.0
 
 [node name="SFX_Whoosh" type="AudioStreamPlayer" parent="AudioManager/Mocho"]
 stream = ExtResource( 7 )
-volume_db = -4.0
+volume_db = -3.0
 bus = "SFX"
 
 [node name="SFX_LowWhoosh" type="AudioStreamPlayer" parent="AudioManager/Mocho"]
-volume_db = -6.0
-pitch_scale = 0.7
+stream = ExtResource( 8 )
+volume_db = -13.0
 bus = "SFX"
 
-[node name="SFX_Attk" parent="AudioManager/Mocho" instance=ExtResource( 8 )]
+[node name="SFX_Attk" parent="AudioManager/Mocho" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 318.239, 286.852 )
 Bus = "SFX"
 
-[node name="SoundObject" parent="AudioManager/Mocho/SFX_Attk" instance=ExtResource( 9 )]
-stream = ExtResource( 10 )
-
-[node name="SoundObject2" parent="AudioManager/Mocho/SFX_Attk" instance=ExtResource( 9 )]
+[node name="SoundObject" parent="AudioManager/Mocho/SFX_Attk" instance=ExtResource( 10 )]
 stream = ExtResource( 11 )
 
-[node name="SFX_Hurt" parent="AudioManager/Mocho" instance=ExtResource( 8 )]
+[node name="SoundObject2" parent="AudioManager/Mocho/SFX_Attk" instance=ExtResource( 10 )]
+stream = ExtResource( 12 )
+
+[node name="SFX_Hurt" parent="AudioManager/Mocho" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 318.239, 286.852 )
 Volume = 4.0
 Bus = "SFX"
 
-[node name="SoundObject" parent="AudioManager/Mocho/SFX_Hurt" instance=ExtResource( 9 )]
-stream = ExtResource( 12 )
-
-[node name="SoundObject2" parent="AudioManager/Mocho/SFX_Hurt" instance=ExtResource( 9 )]
+[node name="SoundObject" parent="AudioManager/Mocho/SFX_Hurt" instance=ExtResource( 10 )]
 stream = ExtResource( 13 )
 
-[node name="SFX_Block" parent="AudioManager/Mocho" instance=ExtResource( 8 )]
+[node name="SoundObject2" parent="AudioManager/Mocho/SFX_Hurt" instance=ExtResource( 10 )]
+stream = ExtResource( 14 )
+
+[node name="SFX_Block" parent="AudioManager/Mocho" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 318.239, 286.852 )
 Volume = 2.0
@@ -147,17 +153,51 @@ maxVolume = 1.0
 RandomPitch = true
 minPitch = -3.0
 
-[node name="SoundObject" parent="AudioManager/Mocho/SFX_Block" instance=ExtResource( 9 )]
-stream = ExtResource( 14 )
+[node name="SoundObject" parent="AudioManager/Mocho/SFX_Block" instance=ExtResource( 10 )]
+stream = ExtResource( 15 )
 
-[node name="SFX_Stunned" parent="AudioManager/Mocho" instance=ExtResource( 8 )]
+[node name="SFX_BlockGrunt" parent="AudioManager/Mocho" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 318.239, 286.852 )
-stream = ExtResource( 15 )
+Volume = -2.0
 Bus = "SFX"
 
-[node name="SoundObject" parent="AudioManager/Mocho/SFX_Stunned" instance=ExtResource( 9 )]
-stream = ExtResource( 14 )
+[node name="SoundObject" parent="AudioManager/Mocho/SFX_BlockGrunt" instance=ExtResource( 10 )]
+stream = ExtResource( 16 )
+
+[node name="SoundObject2" parent="AudioManager/Mocho/SFX_BlockGrunt" instance=ExtResource( 10 )]
+stream = ExtResource( 17 )
+
+[node name="SFX_Parry" parent="AudioManager/Mocho" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 318.239, 286.852 )
+stream = ExtResource( 18 )
+Volume = 4.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Mocho/SFX_Parry" instance=ExtResource( 10 )]
+stream = ExtResource( 19 )
+
+[node name="SFX_Stunned" parent="AudioManager/Mocho" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 318.239, 286.852 )
+stream = ExtResource( 18 )
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Mocho/SFX_Stunned" instance=ExtResource( 10 )]
+stream = ExtResource( 15 )
+
+[node name="SFX_Death" parent="AudioManager/Mocho" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 318.239, 286.852 )
+Volume = 5.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Mocho/SFX_Death" instance=ExtResource( 10 )]
+stream = ExtResource( 20 )
+
+[node name="SoundObject2" parent="AudioManager/Mocho/SFX_Death" instance=ExtResource( 10 )]
+stream = ExtResource( 21 )
 
 [node name="Alien" type="Control" parent="AudioManager"]
 editor/display_folded = true
@@ -165,81 +205,83 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="SFX_Death" type="AudioStreamPlayer" parent="AudioManager/Alien"]
-stream = ExtResource( 16 )
+stream = ExtResource( 22 )
 bus = "SFX"
 
-[node name="SFX_Prepare" parent="AudioManager/Alien" instance=ExtResource( 8 )]
+[node name="SFX_Prepare" parent="AudioManager/Alien" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
 Bus = "SFX"
 
-[node name="SoundObject" parent="AudioManager/Alien/SFX_Prepare" instance=ExtResource( 9 )]
-stream = ExtResource( 17 )
+[node name="SoundObject" parent="AudioManager/Alien/SFX_Prepare" instance=ExtResource( 10 )]
+stream = ExtResource( 23 )
 Volume = 6.0
 
-[node name="SoundObject2" parent="AudioManager/Alien/SFX_Prepare" instance=ExtResource( 9 )]
-stream = ExtResource( 18 )
+[node name="SoundObject2" parent="AudioManager/Alien/SFX_Prepare" instance=ExtResource( 10 )]
+stream = ExtResource( 24 )
 
-[node name="SFX_Dodge" parent="AudioManager/Alien" instance=ExtResource( 8 )]
+[node name="SFX_Dodge" parent="AudioManager/Alien" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
 Bus = "SFX"
 
-[node name="SoundObject" parent="AudioManager/Alien/SFX_Dodge" instance=ExtResource( 9 )]
-stream = ExtResource( 19 )
+[node name="SoundObject" parent="AudioManager/Alien/SFX_Dodge" instance=ExtResource( 10 )]
+stream = ExtResource( 25 )
 Volume = 6.0
 
-[node name="SoundObject2" parent="AudioManager/Alien/SFX_Dodge" instance=ExtResource( 9 )]
-stream = ExtResource( 20 )
+[node name="SoundObject2" parent="AudioManager/Alien/SFX_Dodge" instance=ExtResource( 10 )]
+stream = ExtResource( 26 )
 
-[node name="SFX_Attk" parent="AudioManager/Alien" instance=ExtResource( 8 )]
+[node name="SFX_Attk" parent="AudioManager/Alien" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
 Volume = -2.0
 Bus = "SFX"
 
-[node name="SoundObject" parent="AudioManager/Alien/SFX_Attk" instance=ExtResource( 9 )]
-stream = ExtResource( 21 )
+[node name="SoundObject" parent="AudioManager/Alien/SFX_Attk" instance=ExtResource( 10 )]
+stream = ExtResource( 27 )
 Volume = 6.0
 
-[node name="SoundObject2" parent="AudioManager/Alien/SFX_Attk" instance=ExtResource( 9 )]
-stream = ExtResource( 22 )
+[node name="SoundObject2" parent="AudioManager/Alien/SFX_Attk" instance=ExtResource( 10 )]
+stream = ExtResource( 28 )
 
-[node name="SoundObject3" parent="AudioManager/Alien/SFX_Attk" instance=ExtResource( 9 )]
-stream = ExtResource( 23 )
+[node name="SoundObject3" parent="AudioManager/Alien/SFX_Attk" instance=ExtResource( 10 )]
+stream = ExtResource( 29 )
 
-[node name="SFX_Slash" parent="AudioManager/Alien" instance=ExtResource( 8 )]
-editor/display_folded = true
+[node name="SFX_Slash" parent="AudioManager/Alien" instance=ExtResource( 9 )]
 position = Vector2( 322.192, 153.019 )
 Volume = 1.0
 Bus = "SFX"
 
-[node name="SoundObject" parent="AudioManager/Alien/SFX_Slash" instance=ExtResource( 9 )]
-stream = ExtResource( 24 )
-
-[node name="SFX_Move" parent="AudioManager/Alien" instance=ExtResource( 8 )]
-editor/display_folded = true
-position = Vector2( 322.192, 153.019 )
+[node name="SoundObject" parent="AudioManager/Alien/SFX_Slash" instance=ExtResource( 10 )]
+stream = ExtResource( 30 )
 Volume = 2.0
-Bus = "SFX"
 
-[node name="SoundObject" parent="AudioManager/Alien/SFX_Move" instance=ExtResource( 9 )]
-stream = ExtResource( 25 )
-Volume = 6.0
+[node name="SFX_Move" parent="AudioManager/Alien" instance=ExtResource( 9 )]
+position = Vector2( 322.192, 153.019 )
+Volume = 3.0
+Pitch = 2.0
+Bus = "SFX"
+RandomPitch = true
+minPitch = 3.0
+maxPitch = -1.0
+
+[node name="SoundObject" parent="AudioManager/Alien/SFX_Move" instance=ExtResource( 10 )]
+stream = ExtResource( 31 )
 
 [node name="titulo_mocho" type="Sprite" parent="."]
 visible = false
 position = Vector2( 778.679, 475.638 )
-texture = ExtResource( 26 )
+texture = ExtResource( 32 )
 
 [node name="Kills" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
 
-[node name="UI" parent="." instance=ExtResource( 27 )]
+[node name="UI" parent="." instance=ExtResource( 33 )]
 
 [node name="Metronome" type="Node" parent="."]
-script = ExtResource( 28 )
+script = ExtResource( 34 )
 bpm = 154.0
 
 [node name="Tempo" type="Label" parent="."]
@@ -251,5 +293,5 @@ margin_bottom = 189.488
 [node name="Foreground" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 29 )
+texture = ExtResource( 35 )
 

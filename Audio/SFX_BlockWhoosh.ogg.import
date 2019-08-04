@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_BlockWhoosh.ogg-6d3ce0ba422c2b9de3d16c0a9e803da1.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_BlockWhoosh.ogg"
+dest_files=[ "res://.import/SFX_BlockWhoosh.ogg-6d3ce0ba422c2b9de3d16c0a9e803da1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

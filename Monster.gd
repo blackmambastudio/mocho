@@ -114,8 +114,7 @@ func set_status(status):
 			AM.alien_attack()
 			$Sprite.set_frame(2)
 		STATUS.DODGE:
-			if randf() < 0.2:
-				AM.alien_dodge()
+			AM.alien_dodge()
 			# trigger the dogging animation
 			randomize()
 			if randf() < 0.5:

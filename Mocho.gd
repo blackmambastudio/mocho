@@ -65,6 +65,7 @@ func set_status(status):
 				$AnimationPlayer.play("Idle")
 		STATUS.PARRY:
 			self.add_stamina(stm_recover_parry)
+			AM.mocho_parry()
 			$AnimationPlayer.play("ParryHit", -1, 1.3)
 		STATUS.TO_HIT:
 			self.add_stamina(stm_cost_hit)

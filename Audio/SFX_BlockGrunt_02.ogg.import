@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_BlockGrunt_02.ogg-dd886a95b189c80f63c82717777bf5bd.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_BlockGrunt_02.ogg"
+dest_files=[ "res://.import/SFX_BlockGrunt_02.ogg-dd886a95b189c80f63c82717777bf5bd.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

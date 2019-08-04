@@ -90,10 +90,10 @@ func on_mocho_updated(status):
 		STATUS.BLOCK:
 			pass
 		STATUS.DEAD:
-			$AudioManager/MX_InGame.volume_db = -80
+			$AudioManager.mocho_die()
 			$Metronome.playing = false
 			$UI.show_restart()
-
+	
 	if current_monster:
 		current_monster.set_mocho_status(status)
 

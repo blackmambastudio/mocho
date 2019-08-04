@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_MochoDeath_02.ogg-5ca8a7bb90e60f2e1e084c1928aa48fc.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_MochoDeath_02.ogg"
+dest_files=[ "res://.import/SFX_MochoDeath_02.ogg-5ca8a7bb90e60f2e1e084c1928aa48fc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
