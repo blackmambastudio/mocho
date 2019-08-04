@@ -22,7 +22,10 @@ func _ready():
 func set_status(status):
 	match status:
 		STATUS.HIT:
-			$AnimationPlayer.play("Spit")
+			if current_attack == 0:
+				$AnimationPlayer.play("Spit")
+				AM.alien_spit()
+			
 	.set_status(status)
 
 func apply_damage(mocho):

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/SFX_MartaSpit_02.ogg-cd1227cc2ad22c0feabf27f90293261
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

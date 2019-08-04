@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Assets/fondo.jpg" type="Texture" id=2]
@@ -35,10 +35,22 @@
 [ext_resource path="res://Audio/SFX_MiltonPrepare_02.ogg" type="AudioStream" id=33]
 [ext_resource path="res://Audio/SFX_MiltonDodge_01.ogg" type="AudioStream" id=34]
 [ext_resource path="res://Audio/SFX_MiltonDodge_02.ogg" type="AudioStream" id=35]
-[ext_resource path="res://Assets/titulo_mocho.png" type="Texture" id=36]
-[ext_resource path="res://GUI.tscn" type="PackedScene" id=37]
-[ext_resource path="res://Metronome.gd" type="Script" id=38]
-[ext_resource path="res://Assets/arbol_frente.png" type="Texture" id=39]
+[ext_resource path="res://Audio/SFX_MiltonAttk_01.ogg" type="AudioStream" id=36]
+[ext_resource path="res://Audio/SFX_MiltonAttk_02.ogg" type="AudioStream" id=37]
+[ext_resource path="res://Audio/SFX_MartaPrepare_01.ogg" type="AudioStream" id=38]
+[ext_resource path="res://Audio/SFX_MartaPrepare_02.ogg" type="AudioStream" id=39]
+[ext_resource path="res://Audio/SFX_MartaDodge_01.ogg" type="AudioStream" id=40]
+[ext_resource path="res://Audio/SFX_MartaDodge_02.ogg" type="AudioStream" id=41]
+[ext_resource path="res://Audio/SFX_MartaAttk_01.ogg" type="AudioStream" id=42]
+[ext_resource path="res://Audio/SFX_MartaAttk_02.ogg" type="AudioStream" id=43]
+[ext_resource path="res://Audio/SFX_MartaSpit_01.ogg" type="AudioStream" id=44]
+[ext_resource path="res://Audio/SFX_MartaSpit_02.ogg" type="AudioStream" id=45]
+[ext_resource path="res://Audio/SFX_MartaSpitGrunt_01.ogg" type="AudioStream" id=46]
+[ext_resource path="res://Audio/SFX_MartaSpitGrunt_02.ogg" type="AudioStream" id=47]
+[ext_resource path="res://Assets/titulo_mocho.png" type="Texture" id=48]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=49]
+[ext_resource path="res://Metronome.gd" type="Script" id=50]
+[ext_resource path="res://Assets/arbol_frente.png" type="Texture" id=51]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fall"
@@ -99,7 +111,6 @@ time_dodge = 0.1
 time_blocking = 0.5
 
 [node name="AudioManager" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 5 )
@@ -110,6 +121,7 @@ stream = ExtResource( 6 )
 bus = "Music"
 
 [node name="Mocho" type="Control" parent="AudioManager"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -275,6 +287,7 @@ maxPitch = -1.0
 stream = ExtResource( 31 )
 
 [node name="Milton" type="Control" parent="AudioManager"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -318,14 +331,11 @@ Pitch = 2.0
 Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Milton/SFX_Attk" instance=ExtResource( 10 )]
-stream = ExtResource( 11 )
+stream = ExtResource( 36 )
 Volume = 6.0
 
 [node name="SoundObject2" parent="AudioManager/Milton/SFX_Attk" instance=ExtResource( 10 )]
-stream = ExtResource( 12 )
-
-[node name="SoundObject3" parent="AudioManager/Milton/SFX_Attk" instance=ExtResource( 10 )]
-stream = ExtResource( 29 )
+stream = ExtResource( 37 )
 
 [node name="SFX_Slash" parent="AudioManager/Milton" instance=ExtResource( 9 )]
 editor/display_folded = true
@@ -339,7 +349,6 @@ stream = ExtResource( 30 )
 Volume = 2.0
 
 [node name="Marta" type="Control" parent="AudioManager"]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -350,51 +359,75 @@ bus = "SFX"
 [node name="SFX_Prepare" parent="AudioManager/Marta" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
-Pitch = 8.0
+Volume = 2.0
+Pitch = 2.0
 Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Marta/SFX_Prepare" instance=ExtResource( 10 )]
-stream = ExtResource( 23 )
+stream = ExtResource( 38 )
 Volume = 6.0
 
 [node name="SoundObject2" parent="AudioManager/Marta/SFX_Prepare" instance=ExtResource( 10 )]
-stream = ExtResource( 24 )
+stream = ExtResource( 39 )
 
 [node name="SFX_Dodge" parent="AudioManager/Marta" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
-Pitch = 8.0
+Volume = 2.0
+Pitch = 2.0
 Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Marta/SFX_Dodge" instance=ExtResource( 10 )]
-stream = ExtResource( 25 )
+stream = ExtResource( 40 )
 Volume = 6.0
 
 [node name="SoundObject2" parent="AudioManager/Marta/SFX_Dodge" instance=ExtResource( 10 )]
-stream = ExtResource( 26 )
+stream = ExtResource( 41 )
 
 [node name="SFX_Attk" parent="AudioManager/Marta" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
-Volume = -2.0
-Pitch = 8.0
+Pitch = 2.0
 Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Marta/SFX_Attk" instance=ExtResource( 10 )]
-stream = ExtResource( 27 )
+stream = ExtResource( 42 )
 Volume = 6.0
 
 [node name="SoundObject2" parent="AudioManager/Marta/SFX_Attk" instance=ExtResource( 10 )]
-stream = ExtResource( 28 )
+stream = ExtResource( 43 )
 
-[node name="SoundObject3" parent="AudioManager/Marta/SFX_Attk" instance=ExtResource( 10 )]
-stream = ExtResource( 29 )
+[node name="SFX_Spit" parent="AudioManager/Marta" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 322.192, 153.019 )
+Volume = 4.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Marta/SFX_Spit" instance=ExtResource( 10 )]
+stream = ExtResource( 44 )
+Volume = 6.0
+
+[node name="SoundObject2" parent="AudioManager/Marta/SFX_Spit" instance=ExtResource( 10 )]
+stream = ExtResource( 45 )
+
+[node name="SFX_SpitGrunt" parent="AudioManager/Marta" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 322.192, 153.019 )
+Volume = 2.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Marta/SFX_SpitGrunt" instance=ExtResource( 10 )]
+stream = ExtResource( 46 )
+Volume = 6.0
+
+[node name="SoundObject2" parent="AudioManager/Marta/SFX_SpitGrunt" instance=ExtResource( 10 )]
+stream = ExtResource( 47 )
 
 [node name="SFX_Slash" parent="AudioManager/Marta" instance=ExtResource( 9 )]
 editor/display_folded = true
 position = Vector2( 322.192, 153.019 )
 Volume = 1.0
-Pitch = 14.0
+Pitch = 6.0
 Bus = "SFX"
 
 [node name="SoundObject" parent="AudioManager/Marta/SFX_Slash" instance=ExtResource( 10 )]
@@ -404,17 +437,17 @@ Volume = 2.0
 [node name="titulo_mocho" type="Sprite" parent="."]
 visible = false
 position = Vector2( 778.679, 475.638 )
-texture = ExtResource( 36 )
+texture = ExtResource( 48 )
 
 [node name="Kills" type="Label" parent="."]
 visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 
-[node name="UI" parent="." instance=ExtResource( 37 )]
+[node name="UI" parent="." instance=ExtResource( 49 )]
 
 [node name="Metronome" type="Node" parent="."]
-script = ExtResource( 38 )
+script = ExtResource( 50 )
 bpm = 154.0
 
 [node name="Tempo" type="Label" parent="."]
@@ -427,10 +460,10 @@ margin_bottom = 189.488
 [node name="Foreground" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 39 )
+texture = ExtResource( 51 )
 
 [node name="Foreground2" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 39 )
+texture = ExtResource( 51 )
 
