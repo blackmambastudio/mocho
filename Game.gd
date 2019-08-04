@@ -83,13 +83,15 @@ func on_mocho_updated(status):
 			pass
 		STATUS.BLOCK:
 			pass
+		STATUS.DEAD:
+			$Background/AnimationPlayer.play("Fall")
 	
 	if current_monster:
 		current_monster.set_mocho_status(status)
 
 func on_monster_updated(status):
 	if status == STATUS.HIT:
-		$Mocho.get_damage(10)
+		$Mocho.get_damage(current_monster.strength)
 		# Update the GUI
 		$UI.update_health($Mocho.hp)
 

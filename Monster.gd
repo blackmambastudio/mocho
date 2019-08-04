@@ -1,6 +1,7 @@
 extends "res://Fighter.gd"
 
 export (float) var reflexes = 0.95
+export (float) var strength = 10
 
 # to dodge...
 # dodge
@@ -21,6 +22,7 @@ var status_pattern = [
 	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
 	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
 ]
+var mocho_dead = false
 
 onready var beats_lenght = len(status_pattern)
 onready var approaching = 0
@@ -31,6 +33,10 @@ func _ready():
 
 func set_mocho_status(mocho_status):
 	self.mocho_status = mocho_status
+	match self.mocho_status:
+		STATUS.DEAD:
+			mocho_dead = true
+			$AnimationPlayer.play("Victory")
 
 func check_dodge(chance):
 	if current_status != STATUS.IDLE: return
@@ -41,7 +47,10 @@ func check_dodge(chance):
 		self.set_status(STATUS.TO_DODGE)
 
 func solve_next(beat, tick):
+	if mocho_dead: return
+
 	var beat_index = beat % beats_lenght
+
 	if approaching >= 0:
 		approaching += 1
 		match approaching:

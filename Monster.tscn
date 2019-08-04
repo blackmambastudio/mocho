@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Monster.gd" type="Script" id=2]
@@ -36,6 +36,21 @@ tracks/0/keys = {
 "values": [ Vector2( 300, 230 ), Vector2( 410, 230 ), Vector2( 300, 230 ) ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "Victory"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00304673, 0.7 ),
+"transitions": PoolRealArray( -0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 300, 230 ), Vector2( 300, -122 ) ]
+}
+
 [node name="Monster" instance=ExtResource( 1 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,6 +63,7 @@ script = ExtResource( 2 )
 id = "monster"
 time_release = 0.35
 time_to_hit = 0.5
+strength = 70.0
 
 [node name="Label" parent="." index="0"]
 visible = false
@@ -56,11 +72,12 @@ visible = false
 visible = false
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
-position = Vector2( 300, 230 )
+position = Vector2( 300, 203.859 )
 texture = ExtResource( 3 )
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 anims/DodgeLeft = SubResource( 1 )
 anims/DodgeRight = SubResource( 2 )
+anims/Victory = SubResource( 3 )
 
