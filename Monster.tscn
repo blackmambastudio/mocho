@@ -65,6 +65,7 @@ script = ExtResource( 2 )
 id = "monster"
 time_release = 0.35
 time_to_hit = 0.48
+damage = 10
 
 [node name="HP" parent="." index="1"]
 visible = false

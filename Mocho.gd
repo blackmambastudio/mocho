@@ -3,19 +3,41 @@ extends "res://Fighter.gd"
 onready var block_blood = preload("res://BlockBlood.tscn")
 
 var AM
+var stamina = 100
 
 func _ready():
 	AM = get_node("../AudioManager")
 
+func hit():
+	if stamina < 10: return
+	.hit()
+
+func add_stamina(value):
+	if self.hp <= 0: return
+	self.stamina += value
+	if self.stamina < 0:
+		self.stamina = 0
+	if self.stamina > 100:
+		self.stamina = 100
+	
+	$Stamina.text = 'Stamina: '+str(self.stamina)
+	
 func set_status(status):
 	match status:
-		STATUS.IDLE, STATUS.CANCEL:
+		STATUS.CANCEL:
+			self.add_stamina(10)
+			$ColorRect.self_modulate.a = 0
+			$Sprite.set_frame(0)
+			$AnimationPlayer.play("Idle")
+		STATUS.IDLE:
 			$ColorRect.self_modulate.a = 0
 			$Sprite.set_frame(0)
 			$AnimationPlayer.play("Idle")
 		STATUS.PARRY:
+			self.add_stamina(50)
 			$AnimationPlayer.play("ParryHit", -1, 1.3)
 		STATUS.TO_HIT:
+			self.add_stamina(-10)
 			$Sprite.set_frame(3)
 		STATUS.HIT:
 			$Sprite.set_frame(4)
@@ -44,6 +66,7 @@ func get_damage(damage):
 			add_child(Blood)
 			Blood.set_emitting(true)
 			$AnimationPlayer.play("BlockHit", -1, 1.3)
+			self.add_stamina(-5)
 
 #warning-ignore:unused_argument
 func _process(delta):

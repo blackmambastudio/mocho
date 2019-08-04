@@ -92,6 +92,7 @@ time_blocking = 0.5
 hp = 100.0
 
 [node name="AudioManager" type="Control" parent="."]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 5 )

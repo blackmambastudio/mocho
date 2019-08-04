@@ -179,3 +179,10 @@ anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 1, 0.92549, 0.839216, 1 )
 
+[node name="Stamina" type="Label" parent="." index="6"]
+margin_left = 14.9641
+margin_top = 78.9017
+margin_right = 54.9641
+margin_bottom = 92.9017
+text = "Stamina: 100"
+

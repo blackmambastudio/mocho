@@ -37,7 +37,6 @@ margin_bottom = 128.0
 texture = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/HUD"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -457.0
@@ -47,9 +46,8 @@ margin_bottom = 112.0
 alignment = 1
 
 [node name="HealthContainer" type="HBoxContainer" parent="GUI/HUD/VBoxContainer"]
-margin_top = 23.0
-margin_right = 441.0
-margin_bottom = 73.0
+margin_right = 452.0
+margin_bottom = 50.0
 
 [node name="Text" type="Label" parent="GUI/HUD/VBoxContainer/HealthContainer"]
 margin_top = 12.0
@@ -62,6 +60,26 @@ text = "HEALTH"
 [node name="HealthBar" type="TextureProgress" parent="GUI/HUD/VBoxContainer/HealthContainer"]
 margin_left = 90.0
 margin_right = 441.0
+margin_bottom = 50.0
+texture_over = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+
+[node name="StaminaContainer" type="HBoxContainer" parent="GUI/HUD/VBoxContainer"]
+margin_top = 54.0
+margin_right = 452.0
+margin_bottom = 104.0
+
+[node name="Text" type="Label" parent="GUI/HUD/VBoxContainer/StaminaContainer"]
+margin_top = 12.0
+margin_right = 97.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.92549, 0.839216, 1 )
+text = "STAMINA"
+
+[node name="StaminaBar" type="TextureProgress" parent="GUI/HUD/VBoxContainer/StaminaContainer"]
+margin_left = 101.0
+margin_right = 452.0
 margin_bottom = 50.0
 texture_over = ExtResource( 4 )
 texture_progress = ExtResource( 5 )
