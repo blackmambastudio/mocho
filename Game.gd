@@ -7,6 +7,7 @@ var STATUS = Fighter.STATUS
 
 var current_monster
 var kills = 0
+var music_playing
 
 func _ready():
 	randomize()
@@ -29,7 +30,9 @@ func start_juego():
 	$Metronome.start()
 
 func on_metronome_sync_start(time):
-	$AudioManager/MX_InGame.seek(time)
+	if not music_playing:
+		$AudioManager/MX_InGame.seek(time)
+		music_playing = true
 	$AudioManager/MX_InGame.volume_db = -8
 
 func new_monster():

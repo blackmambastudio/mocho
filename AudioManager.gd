@@ -36,16 +36,24 @@ func alien_prepare(monster_type):
 	match monster_type:
 		"Mostro":
 			$Alien/SFX_Prepare.playsound()
+		"Milton":
+			$Milton/SFX_Prepare.playsound()
+		"Marta":
+			$Marta/SFX_Prepare.playsound()
 	
 
 func alien_attack(monster_type):
-	
 	match monster_type:
 		"Mostro":
-			$Alien/SFX_Slash.playsound()
 			if randf() < 0.3:
 				$Alien/SFX_Attk.playsound()
-	
+		"Milton":
+			if randf() < 0.3:
+				$Milton/SFX_Attk.playsound()
+		"Marta":
+			if randf() < 0.3:
+				$Marta/SFX_Attk.playsound()
+	$Alien/SFX_Slash.playsound()
 	
 func alien_dodge(monster_type):
 	
@@ -53,10 +61,14 @@ func alien_dodge(monster_type):
 		"Mostro":
 			if randf() < 0.2:
 				$Alien/SFX_Dodge.playsound()
-			$Alien/SFX_Move.playsound()
+		"Milton":
+			if randf() < 0.2:
+				$Milton/SFX_Dodge.playsound()
+		"Marta":
+			if randf() < 0.2:
+				$Marta/SFX_Dodge.playsound()
+	$Alien/SFX_Move.playsound()
 
 func alien_death(monster_type):
 	
-	match monster_type:
-		"Mostro":
-			$Alien/SFX_Death.play()
+	$Alien/SFX_Death.play()

@@ -269,6 +269,131 @@ maxPitch = -1.0
 [node name="SoundObject" parent="AudioManager/Alien/SFX_Move" instance=ExtResource( 10 )]
 stream = ExtResource( 31 )
 
+[node name="Milton" type="Control" parent="AudioManager"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="SFX_Death" type="AudioStreamPlayer" parent="AudioManager/Milton"]
+stream = ExtResource( 22 )
+bus = "SFX"
+
+[node name="SFX_Prepare" parent="AudioManager/Milton" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 322.192, 153.019 )
+Pitch = -8.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Milton/SFX_Prepare" instance=ExtResource( 10 )]
+stream = ExtResource( 23 )
+Volume = 6.0
+
+[node name="SoundObject2" parent="AudioManager/Milton/SFX_Prepare" instance=ExtResource( 10 )]
+stream = ExtResource( 24 )
+
+[node name="SFX_Dodge" parent="AudioManager/Milton" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 322.192, 153.019 )
+Pitch = -8.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Milton/SFX_Dodge" instance=ExtResource( 10 )]
+stream = ExtResource( 25 )
+Volume = 6.0
+
+[node name="SoundObject2" parent="AudioManager/Milton/SFX_Dodge" instance=ExtResource( 10 )]
+stream = ExtResource( 26 )
+
+[node name="SFX_Attk" parent="AudioManager/Milton" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 322.192, 153.019 )
+Volume = -2.0
+Pitch = -8.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Milton/SFX_Attk" instance=ExtResource( 10 )]
+stream = ExtResource( 27 )
+Volume = 6.0
+
+[node name="SoundObject2" parent="AudioManager/Milton/SFX_Attk" instance=ExtResource( 10 )]
+stream = ExtResource( 28 )
+
+[node name="SoundObject3" parent="AudioManager/Milton/SFX_Attk" instance=ExtResource( 10 )]
+stream = ExtResource( 29 )
+
+[node name="SFX_Slash" parent="AudioManager/Milton" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 322.192, 153.019 )
+Volume = 1.0
+Pitch = 10.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Milton/SFX_Slash" instance=ExtResource( 10 )]
+stream = ExtResource( 30 )
+Volume = 2.0
+
+[node name="Marta" type="Control" parent="AudioManager"]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="SFX_Death" type="AudioStreamPlayer" parent="AudioManager/Marta"]
+stream = ExtResource( 22 )
+bus = "SFX"
+
+[node name="SFX_Prepare" parent="AudioManager/Marta" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 322.192, 153.019 )
+Pitch = 8.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Marta/SFX_Prepare" instance=ExtResource( 10 )]
+stream = ExtResource( 23 )
+Volume = 6.0
+
+[node name="SoundObject2" parent="AudioManager/Marta/SFX_Prepare" instance=ExtResource( 10 )]
+stream = ExtResource( 24 )
+
+[node name="SFX_Dodge" parent="AudioManager/Marta" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 322.192, 153.019 )
+Pitch = 8.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Marta/SFX_Dodge" instance=ExtResource( 10 )]
+stream = ExtResource( 25 )
+Volume = 6.0
+
+[node name="SoundObject2" parent="AudioManager/Marta/SFX_Dodge" instance=ExtResource( 10 )]
+stream = ExtResource( 26 )
+
+[node name="SFX_Attk" parent="AudioManager/Marta" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 322.192, 153.019 )
+Volume = -2.0
+Pitch = 8.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Marta/SFX_Attk" instance=ExtResource( 10 )]
+stream = ExtResource( 27 )
+Volume = 6.0
+
+[node name="SoundObject2" parent="AudioManager/Marta/SFX_Attk" instance=ExtResource( 10 )]
+stream = ExtResource( 28 )
+
+[node name="SoundObject3" parent="AudioManager/Marta/SFX_Attk" instance=ExtResource( 10 )]
+stream = ExtResource( 29 )
+
+[node name="SFX_Slash" parent="AudioManager/Marta" instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 322.192, 153.019 )
+Volume = 1.0
+Pitch = 14.0
+Bus = "SFX"
+
+[node name="SoundObject" parent="AudioManager/Marta/SFX_Slash" instance=ExtResource( 10 )]
+stream = ExtResource( 30 )
+Volume = 2.0
+
 [node name="titulo_mocho" type="Sprite" parent="."]
 visible = false
 position = Vector2( 778.679, 475.638 )
