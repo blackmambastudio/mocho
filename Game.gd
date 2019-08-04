@@ -25,6 +25,7 @@ func _ready():
 
 func start_juego():
 	$UI.update_health(100)
+	$Mocho.add_stamina(100)
 	$UI.update_stamina(100)
 	$UI.update_kills(0)
 	self.new_monster()
