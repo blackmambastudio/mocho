@@ -134,7 +134,6 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-
 margin_left = 0.0
 margin_top = 0.0
 margin_right = 600.0

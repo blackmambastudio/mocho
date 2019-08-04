@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_MochoHurt_02.ogg-27e807bf2e8f54117c2536563d0689f2.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_MochoHurt_02.ogg"
+dest_files=[ "res://.import/SFX_MochoHurt_02.ogg-27e807bf2e8f54117c2536563d0689f2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -25,7 +25,7 @@ func _ready():
 
 func on_metronome_sync_start(time):
 	$AudioManager/MX_InGame.seek(time)
-	$AudioManager/MX_InGame.volume_db = 0
+	$AudioManager/MX_InGame.volume_db = -8
 
 func new_monster():
 	current_monster = $Dungeon.next_monster()
@@ -71,6 +71,7 @@ func on_mocho_updated(status):
 	match status:
 		STATUS.HIT:
 			$AudioManager/Mocho/SFX_Whoosh.play()
+			$AudioManager/Mocho/SFX_Attk.playsound()
 			pass
 			self.kill_monster()
 		STATUS.IDLE:

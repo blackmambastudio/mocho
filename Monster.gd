@@ -1,5 +1,8 @@
 extends "res://Fighter.gd"
 
+#AudioManager
+var AM
+
 export (float) var reflexes = 0.95
 export (float) var strength = 10
 
@@ -30,6 +33,7 @@ onready var beats_lenght = len(status_pattern)
 onready var approaching = 0
 
 func _ready():
+	AM = get_node("../AudioManager")
 	$Sprite.set_scale(Vector2(0, 0))
 	self.release()
 
@@ -83,10 +87,14 @@ func set_status(status):
 		STATUS.IDLE, STATUS.STUNNED:
 			$Sprite.set_frame(0)
 		STATUS.TO_HIT:
+			AM.alien_prepare()
 			$Sprite.set_frame(1)
 		STATUS.HIT:
+			AM.alien_attack()
 			$Sprite.set_frame(2)
 		STATUS.DODGE:
+			if randf() < 0.2:
+				AM.alien_dodge()
 			# trigger the dogging animation
 			if randf() < 0.5:
 				$AnimationPlayer.play("DodgeLeft", -1, 1.5)

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_AlienAttack_01.ogg-c85f62bfe30d20867ecc9b0f23c4b2e0.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_AlienAttack_01.ogg"
+dest_files=[ "res://.import/SFX_AlienAttack_01.ogg-c85f62bfe30d20867ecc9b0f23c4b2e0.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
