@@ -6,9 +6,10 @@ var Milton = preload("res://MonsterMilton.tscn")
 
 func next_monster():
 	randomize()
-	if randf() < 0.5:
+	var value = randf()
+	if value < 0.5:
 		return Monster.instance()
-	if randf() < 0.8:
+	if value < 0.8:
 		return Milton.instance()
 	else:
 		return Marta.instance()

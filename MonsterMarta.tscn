@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/alien-02.png" type="Texture" id=3]
 [ext_resource path="res://Assets/smoke_10.png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Spit"
 length = 0.6
 tracks/0/type = "value"
@@ -81,10 +81,10 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
 
-[node name="MonsterMarta" index="0" instance=ExtResource( 1 )]
+[node name="MonsterMarta" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 id = "fighter"
 time_to_block = 0.2
@@ -92,8 +92,8 @@ time_release = 0.1
 time_to_hit = 0.4
 time_dodge = 0.1
 time_blocking = 0.1
-damage = 5
 monster_type = "Marta"
+min_time_to_hit = 0.1
 
 [node name="Label" parent="." index="0"]
 margin_left = 19.0452
@@ -105,14 +105,13 @@ margin_bottom = 64.649
 position = Vector2( 300, 224.54 )
 texture = ExtResource( 3 )
 hframes = 6
-frame = 2
 
 [node name="AnimationPlayer" parent="." index="3"]
-anims/Spit = SubResource( 2 )
+anims/Spit = SubResource( 1 )
 
 [node name="Smoke" type="Sprite" parent="." index="4"]
 modulate = Color( 0.152941, 0.858824, 0.180392, 1 )
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 289, 212 )
 scale = Vector2( 1e-005, 1e-005 )
 texture = ExtResource( 4 )

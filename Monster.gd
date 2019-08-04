@@ -25,12 +25,12 @@ var current_attack = 0
 var status_pattern = [
 	[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1],
-	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+	[1,1,1,1,1,1,0,0,2,1,1,1,1,1,1,1],
+	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],
 	[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1],
-	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+	[1,1,1,1,1,1,0,0,2,1,1,1,1,1,1,1],
+	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0]
 ]
 var mocho_dead = false
 
@@ -116,7 +116,10 @@ func set_status(status):
 			$Sprite.set_frame(1)
 		STATUS.HIT:
 			AM.alien_attack(monster_type)
-			$Sprite.set_frame(2)
+			if current_attack == 0:
+				$Sprite.set_frame(2)
+			else:
+				$Sprite.set_frame(5)
 		STATUS.DODGE:
 			AM.alien_dodge(monster_type)
 			# trigger the dogging animation
