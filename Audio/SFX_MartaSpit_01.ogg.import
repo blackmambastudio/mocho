@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_MartaSpit_01.ogg-412a6c5656fc4e9a2afa40d9ac604313.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_MartaSpit_01.ogg"
+dest_files=[ "res://.import/SFX_MartaSpit_01.ogg-412a6c5656fc4e9a2afa40d9ac604313.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

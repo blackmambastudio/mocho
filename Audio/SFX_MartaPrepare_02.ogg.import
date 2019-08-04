@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_MartaPrepare_02.ogg-4eb9dfc3b5fa64ced7e676244a9666f8.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_MartaPrepare_02.ogg"
+dest_files=[ "res://.import/SFX_MartaPrepare_02.ogg-4eb9dfc3b5fa64ced7e676244a9666f8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

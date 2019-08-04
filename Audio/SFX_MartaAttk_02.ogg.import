@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_MartaAttk_02.ogg-bf24ba7bacb6655993e21a69702950d1.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_MartaAttk_02.ogg"
+dest_files=[ "res://.import/SFX_MartaAttk_02.ogg-bf24ba7bacb6655993e21a69702950d1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

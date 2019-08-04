@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_MartaDodge_01.ogg-883939bee55602038784549501fba2e4.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_MartaDodge_01.ogg"
+dest_files=[ "res://.import/SFX_MartaDodge_01.ogg-883939bee55602038784549501fba2e4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
