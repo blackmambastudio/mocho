@@ -7,7 +7,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Spit"
-length = 0.6
+length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Smoke:position")
 tracks/0/interp = 1
@@ -80,6 +80,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Smoke:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.010623, 0.684403 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("SmokeFX:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.010623, 0.684403 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
@@ -102,7 +126,6 @@ margin_right = 108.045
 margin_bottom = 64.649
 
 [node name="Sprite" parent="." index="2"]
-position = Vector2( 300, 224.54 )
 texture = ExtResource( 3 )
 hframes = 6
 

@@ -19,12 +19,14 @@ func _ready():
 	$Metronome.connect('SIXTEENTH', self, 'on_metronome_note')
 	$Metronome.connect('SYNC', self, 'on_metronome_sync_start')
 	$UI.connect("restart_pressed", self, "restart_game")
+	$UI.connect("start_pressed", self, "start_juego")
 	
-	start_juego()
+	$UI.show_start()
 
 func start_juego():
 	$UI.update_health(100)
 	$UI.update_stamina(100)
+	$UI.update_kills(0)
 	self.new_monster()
 	yield(get_tree().create_timer(2), 'timeout')
 	$Metronome.start()
@@ -58,6 +60,8 @@ func kill_monster():
 		kills += 1
 		$Kills.text = "Kills: " + str(kills)
 		
+		# Update the GUI
+		$UI.update_kills(kills)
 
 # Comenté esto porque ahora el Input Map del proyecto registra la K y el clic
 # izquierdo como "hit"; y la D y el clic derecho como "block" ------------------
