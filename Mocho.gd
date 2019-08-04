@@ -24,6 +24,12 @@ func hit():
 func add_stamina(value):
 	if self.hp <= 0: return
 	self.stamina += value
+	if self.stamina < stm_min_to_hit:
+		$Sprite.self_modulate.a = 0.5
+		$Sprite.set_frame(6)
+		$AnimationPlayer.stop()
+	else:
+		$Sprite.self_modulate.a = 1
 	if self.stamina < 0:
 		self.stamina = 0
 	if self.stamina > 100:
@@ -51,8 +57,9 @@ func set_status(status):
 			$AnimationPlayer.play("Idle")
 		STATUS.IDLE:
 			$CanvasLayer/ColorRect.self_modulate.a = 0
-			$Sprite.set_frame(0)
-			$AnimationPlayer.play("Idle")
+			if self.stamina >= stm_min_to_hit:
+				$Sprite.set_frame(0)
+				$AnimationPlayer.play("Idle")
 		STATUS.PARRY:
 			self.add_stamina(stm_recover_parry)
 			$AnimationPlayer.play("ParryHit", -1, 1.3)
@@ -102,7 +109,8 @@ func _process(delta):
 		self.unblock()
 
 func restart():
-	add_stamina(100)
+	stamina = 100
+	$Sprite.self_modulate.a = 1
 	$AnimationPlayer.seek(0.0)
 	$AnimationPlayer.stop()
 	.restart()

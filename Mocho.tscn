@@ -48,7 +48,7 @@ tracks/2/keys = {
 "values": [ Color( 0.713726, 0.219608, 0.192157, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "Death"
 length = 0.7
 tracks/0/type = "value"
@@ -88,7 +88,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 220 ), Vector2( 0, 290 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -127,8 +127,7 @@ tracks/2/keys = {
 "values": [ Color( 0.713726, 0.219608, 0.192157, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Idle"
+[sub_resource type="Animation" id=5]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -144,8 +143,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 10 ), Vector2( 0, 0 ), Vector2( 0, 5 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "ParryHit"
+[sub_resource type="Animation" id=6]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
@@ -190,12 +188,11 @@ visible = false
 [node name="Sprite" type="Sprite" parent="." index="2"]
 light_mask = 2
 material = SubResource( 1 )
-position = Vector2( 0, 21.1406 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 3 )
 centered = false
-hframes = 6
+hframes = 7
 
 [node name="Light2D" type="Light2D" parent="." index="3"]
 texture = ExtResource( 4 )
@@ -209,10 +206,10 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 autoplay = "Idle"
 anims/BlockHit = SubResource( 2 )
-anims/Death = SubResource( 6 )
-anims/GetHit = SubResource( 3 )
-anims/Idle = SubResource( 4 )
-anims/ParryHit = SubResource( 5 )
+anims/Death = SubResource( 3 )
+anims/GetHit = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/ParryHit = SubResource( 6 )
 
 [node name="Stamina" type="Label" parent="." index="5"]
 margin_left = 14.9641
@@ -225,7 +222,7 @@ text = "Stamina: 100"
 editor/display_folded = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
-self_modulate = Color( 1, 1, 1, 0.0404549 )
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -128.0

@@ -10,7 +10,7 @@ var kills = 0
 
 func _ready():
 	randomize()
-	connect("gui_input", self, "on_input")
+#	connect("gui_input", self, "on_input")
 	$AudioManager/MX_InGame.play()
 	$AudioManager/MX_InGame.volume_db = -80
 	
@@ -22,6 +22,8 @@ func _ready():
 	start_juego()
 
 func start_juego():
+	$UI.update_health(100)
+	$UI.update_stamina(100)
 	self.new_monster()
 	yield(get_tree().create_timer(2), 'timeout')
 	$Metronome.start()
