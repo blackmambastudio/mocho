@@ -37,6 +37,9 @@ anchor_right = 0.5
 margin_left = -300.0
 margin_right = 300.0
 id = "mocho"
+time_to_block = 0.2
+time_dodge = 0.1
+time_blocking = 0.1
 
 [node name="AudioManager" type="Control" parent="."]
 editor/display_folded = true

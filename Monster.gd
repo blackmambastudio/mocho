@@ -1,6 +1,6 @@
 extends "res://Fighter.gd"
 
-export (float) var reflexes = 0.8
+export (float) var reflexes = 0.95
 
 # to dodge...
 # dodge
@@ -12,14 +12,14 @@ var time_next_check = 0.05
 # 2 to be alert!
 # 1 to attack
 var status_pattern = [
-	[2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
 	[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+	[1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+	[1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
 ]
 onready var beats_lenght = len(status_pattern)
 
@@ -33,6 +33,7 @@ func check_dodge(chance):
 	if current_status != STATUS.IDLE: return
 	if self.mocho_status != STATUS.TO_HIT: return
 	var value = randf()
+	print(value)
 	if chance > value:
 		self.set_status(STATUS.TO_DODGE)
 
@@ -56,14 +57,16 @@ func set_status(status):
 			$Sprite.set_frame(2)
 		STATUS.DODGE:
 			# trigger the dogging animation
-			if randi() % 40 < 20:
+			if randf() < 0.5:
 				$AnimationPlayer.play("DodgeLeft", -1, 1.5)
 			else:
 				$AnimationPlayer.play("DodgeRight", -1, 1.5)
 	.set_status(status)
 
 func get_damage(damage):
+	print('>> ', STATUS.keys()[self.current_status])
 	.get_damage(damage)
+	
 	if self.damaged:
 		$Sprite.set_frame(3)
 		yield(get_tree().create_timer(0.05), "timeout")

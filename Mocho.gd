@@ -25,3 +25,11 @@ func get_damage(damage):
 			$AnimationPlayer.play("GetHit", -1, 2.0)
 		else:
 			$AnimationPlayer.play("BlockHit", -1, 1.3)
+
+func _process(delta):
+	if Input.is_action_just_pressed("hit"):
+		self.hit()
+	elif Input.is_action_just_pressed("block"):
+		self.block()
+	elif Input.is_action_just_released("block"):
+		self.unblock()

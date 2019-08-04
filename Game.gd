@@ -72,18 +72,18 @@ func on_mocho_updated(status):
 	match status:
 		STATUS.HIT:
 			$AudioManager/Mocho/SFX_Whoosh.play()
-			$Background.color = Color('669966')
+			pass
 			self.kill_monster()
 		STATUS.IDLE:
-			$Background.color = Color('0a0808')
+			pass
 		STATUS.TO_HIT:
-			$Background.color = Color('2a2828')
+			pass
 		STATUS.RELEASE:
-			$Background.color = Color('2a2828')
+			pass
 		STATUS.TO_BLOCK:
-			$Background.color = Color('2a2828')
+			pass
 		STATUS.BLOCK:
-			$Background.color = Color('222249')
+			pass
 	
 	if current_monster:
 		current_monster.set_mocho_status(status)
@@ -97,10 +97,6 @@ func on_monster_updated(status):
 func on_metronome_note(beat, tick):
 	if current_monster:
 		current_monster.solve_next(beat, tick)
-	if tick == 0 or tick == 1:
-		$Background.color = Color('111111')
-	else:
-		$Background.color = Color('666666')
 	
 	if tick % 4 == 0:
 		$Tempo.text = str(beat) + ': '+str(tick/4 + 1) + '/4'

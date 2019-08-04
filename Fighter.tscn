@@ -8,6 +8,10 @@ margin_top = 54.415
 margin_right = 87.6131
 margin_bottom = 94.415
 script = ExtResource( 1 )
+time_to_block = 0.15
+time_to_hit = 0.2
+time_dodge = 0.15
+time_blocking = 0.2
 
 [node name="Label" type="Label" parent="."]
 margin_left = 19.0452
