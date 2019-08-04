@@ -30,6 +30,7 @@ func add_stamina(value):
 		$AnimationPlayer.stop()
 	else:
 		$Sprite.self_modulate.a = 1
+		$Sprite.set_frame(0)
 	if self.stamina < 0:
 		self.stamina = 0
 	if self.stamina > 100:
