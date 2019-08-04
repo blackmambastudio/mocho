@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_MochoExhaust.ogg-b1de0461d0da3c29961d7153cc53d8a5.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_MochoExhaust.ogg"
+dest_files=[ "res://.import/SFX_MochoExhaust.ogg-b1de0461d0da3c29961d7153cc53d8a5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

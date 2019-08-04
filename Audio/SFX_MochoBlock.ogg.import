@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_MochoBlock.ogg-9e5469d2c6cc6e6ee82a2255d956dee4.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_MochoBlock.ogg"
+dest_files=[ "res://.import/SFX_MochoBlock.ogg-9e5469d2c6cc6e6ee82a2255d956dee4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

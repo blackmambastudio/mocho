@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Audio/zScripts/SoundObject.gd" type="Script" id=1]
+
+
+[node name="SoundObject" type="AudioStreamPlayer2D"]
+position = Vector2( 1, 0 )
+max_distance = 4000.0
+script = ExtResource( 1 )
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_AlienPrepare_02.ogg-1a6df99f26cc9b1b1e5729c07d84cebc.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_AlienPrepare_02.ogg"
+dest_files=[ "res://.import/SFX_AlienPrepare_02.ogg-1a6df99f26cc9b1b1e5729c07d84cebc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
