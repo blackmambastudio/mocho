@@ -35,7 +35,7 @@ func new_monster():
 func kill_monster():
 	if !current_monster: return
 	yield(current_monster.get_damage(100000), "completed")
-	$Mocho.add_stamina(10)
+	$Mocho.recover_stamina_by_kill()
 #	current_monster.get_damage(100000)
 	if current_monster.hp < 0:
 		var Death = alien_death.instance()
@@ -94,9 +94,8 @@ func on_mocho_updated(status):
 func on_monster_updated(status):
 	if status == STATUS.HIT:
 		var damage = current_monster.damage
-		if $Mocho.stamina < 10:
-			damage *= 2
-		$Mocho.get_damage(current_monster.damage)
+		damage = $Mocho.update_applied_damage(damage)
+		$Mocho.get_damage(damage)
 		# Update the GUI
 		$UI.update_health($Mocho.hp)
 
@@ -107,7 +106,7 @@ func on_metronome_note(beat, tick):
 	if tick % 4 == 0:
 		$Tempo.text = str(beat) + ': '+str(tick/4 + 1) + '/4'
 	if tick == 0:
-		$Mocho.add_stamina(1)
+		$Mocho.recover_stamina()
 		$UI.update_stamina($Mocho.stamina)
 	
 	
