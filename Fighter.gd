@@ -132,4 +132,9 @@ func get_damage(damage):
 		self.time_transition = 0
 		set_status(STATUS.STUNNED)
 		
-
+func restart():
+	self.hp = 100
+	self.damaged = false
+	self.block_released = false
+	$HP.text = 'HP: ' + str(self.hp)
+	set_status(STATUS.IDLE)

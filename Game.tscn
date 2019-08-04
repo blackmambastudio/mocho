@@ -1,7 +1,7 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://Assets/walls.png" type="Texture" id=2]
+[ext_resource path="res://Assets/fondo.jpg" type="Texture" id=2]
 [ext_resource path="res://Dungeon.gd" type="Script" id=3]
 [ext_resource path="res://Mocho.tscn" type="PackedScene" id=4]
 [ext_resource path="res://AudioManager.gd" type="Script" id=5]
@@ -28,6 +28,7 @@
 [ext_resource path="res://Assets/titulo_mocho.png" type="Texture" id=26]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Metronome.gd" type="Script" id=28]
+[ext_resource path="res://Assets/arbol_frente.png" type="Texture" id=29]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fall"
@@ -59,12 +60,8 @@ mouse_filter = 2
 color = Color( 0.329412, 0.305882, 0.407843, 1 )
 
 [node name="Walls" type="TextureRect" parent="Background"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -301.0
-margin_top = 6.0706
-margin_right = 301.0
-margin_bottom = 411.071
+margin_right = 600.0
+margin_bottom = 472.0
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
@@ -102,6 +99,7 @@ stream = ExtResource( 6 )
 bus = "Music"
 
 [node name="Mocho" type="Control" parent="AudioManager"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -163,6 +161,7 @@ Bus = "SFX"
 stream = ExtResource( 14 )
 
 [node name="Alien" type="Control" parent="AudioManager"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -249,4 +248,9 @@ margin_left = 63.9376
 margin_top = 175.488
 margin_right = 103.938
 margin_bottom = 189.488
+
+[node name="Foreground" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 29 )
 

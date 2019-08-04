@@ -22,11 +22,10 @@ func _ready():
 	beat_interval = 60 / bpm * 4 / float(time_signature_botton)
 	sixteenth_time = beat_interval/16
 	print (current_time, " time to sixteenth: ", sixteenth_time)
-	
-
 
 func _process(delta):
 	if !playing: return
+
 	if playing and current_time == 0 and current_tick == 0:
 		emit_signal('SYNC', delta)
 	current_time += delta

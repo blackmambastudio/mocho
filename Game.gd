@@ -15,12 +15,15 @@ func _ready():
 	$AudioManager/MX_InGame.volume_db = -80
 	
 	$Mocho.connect("STATUS_UPDATED", self, "on_mocho_updated")
-	self.new_monster()
 	$Metronome.connect('SIXTEENTH', self, 'on_metronome_note')
 	$Metronome.connect('SYNC', self, 'on_metronome_sync_start')
+	$UI.connect("restart_pressed", self, "restart_game")
 	
+	start_juego()
+
+func start_juego():
+	self.new_monster()
 	yield(get_tree().create_timer(2), 'timeout')
-	
 	$Metronome.start()
 
 func on_metronome_sync_start(time):
@@ -54,19 +57,21 @@ func kill_monster():
 		
 		self.new_monster()
 
-func on_input(Event):
-	if Event is InputEventMouseButton:
-		if Event.pressed and !pressed:
-			if Event.button_index == 1:
-				$Mocho.hit()
-			elif Event.button_index == 2:
-				$Mocho.block()
-			pressed = true
-		elif pressed and !Event.pressed:
-			pressed = false
-			if Event.button_index == 2:
-				$Mocho.unblock()
-	
+# Comenté esto porque ahora el Input Map del proyecto registra la K y el clic
+# izquierdo como "hit"; y la D y el clic derecho como "block" ------------------
+#func on_input(Event):
+#	if Event is InputEventMouseButton:
+#		if Event.pressed and !pressed:
+#			if Event.button_index == 1:
+#				$Mocho.hit()
+#			elif Event.button_index == 2:
+#				$Mocho.block()
+#			pressed = true
+#		elif pressed and !Event.pressed:
+#			pressed = false
+#			if Event.button_index == 2:
+#				$Mocho.unblock()
+# ------------------------------------------------------------------------------
 
 func on_mocho_updated(status):
 	match status:
@@ -86,8 +91,10 @@ func on_mocho_updated(status):
 		STATUS.BLOCK:
 			pass
 		STATUS.DEAD:
-			$Background/AnimationPlayer.play("Fall")
-	
+			$AudioManager/MX_InGame.volume_db = -80
+			$Metronome.playing = false
+			$UI.show_restart()
+
 	if current_monster:
 		current_monster.set_mocho_status(status)
 
@@ -108,5 +115,10 @@ func on_metronome_note(beat, tick):
 	if tick == 0:
 		$Mocho.recover_stamina()
 		$UI.update_stamina($Mocho.stamina)
-	
-	
+
+func restart_game():
+	# Delete the current monster
+	if current_monster:
+		current_monster.queue_free()
+	$Mocho.restart()
+	start_juego()

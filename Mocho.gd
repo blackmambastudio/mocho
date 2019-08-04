@@ -46,11 +46,11 @@ func set_status(status):
 	match status:
 		STATUS.CANCEL:
 			self.add_stamina(-stm_cost_hit)
-			$ColorRect.self_modulate.a = 0
+			$CanvasLayer/ColorRect.self_modulate.a = 0
 			$Sprite.set_frame(0)
 			$AnimationPlayer.play("Idle")
 		STATUS.IDLE:
-			$ColorRect.self_modulate.a = 0
+			$CanvasLayer/ColorRect.self_modulate.a = 0
 			$Sprite.set_frame(0)
 			$AnimationPlayer.play("Idle")
 		STATUS.PARRY:
@@ -73,6 +73,9 @@ func set_status(status):
 		STATUS.STUNNED:
 			$Sprite.set_frame(5)
 			AM.mocho_stunned()
+		STATUS.DEAD:
+			yield($AnimationPlayer, "animation_finished")
+			$AnimationPlayer.play("Death")
 	.set_status(status)
 
 func get_damage(damage):
@@ -97,3 +100,9 @@ func _process(delta):
 		self.block()
 	elif Input.is_action_just_released("block"):
 		self.unblock()
+
+func restart():
+	add_stamina(100)
+	$AnimationPlayer.seek(0.0)
+	$AnimationPlayer.stop()
+	.restart()

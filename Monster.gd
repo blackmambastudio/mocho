@@ -4,7 +4,6 @@ extends "res://Fighter.gd"
 var AM
 
 export (float) var reflexes = 0.95
-export (float) var strength = 10
 
 var mocho_status = 0
 
@@ -42,10 +41,9 @@ func set_mocho_status(mocho_status):
 	match self.mocho_status:
 		STATUS.DEAD:
 			mocho_dead = true
-			$AnimationPlayer.play("Victory")
+			# $AnimationPlayer.play("Victory")
 
 func check_dodge(chance):
-	
 	if current_status == STATUS.TO_DODGE and self.mocho_status == STATUS.CANCEL:
 		self.set_status(STATUS.DODGE)
 		return
@@ -100,6 +98,7 @@ func set_status(status):
 			if randf() < 0.2:
 				AM.alien_dodge()
 			# trigger the dogging animation
+			randomize()
 			if randf() < 0.5:
 				$AnimationPlayer.play("DodgeLeft", -1, 1.5)
 			else:
