@@ -66,6 +66,7 @@ id = "monster"
 time_release = 0.35
 time_to_hit = 0.48
 damage = 10
+monster_type = "Mostro"
 
 [node name="Label" parent="." index="0"]
 visible = false

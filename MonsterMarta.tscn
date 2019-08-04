@@ -13,6 +13,7 @@ time_to_hit = 0.4
 time_dodge = 0.1
 time_blocking = 0.1
 damage = 5
+monster_type = "Marta"
 
 [node name="Label" parent="." index="0"]
 margin_left = 19.0452

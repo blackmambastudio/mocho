@@ -47,8 +47,6 @@ func kill_monster():
 		var Death = alien_death.instance()
 		add_child(Death)
 		Death.set_emitting(true)
-		
-		$AudioManager/Alien/SFX_Death.play()
 		current_monster.disconnect("STATUS_UPDATED", self, "on_monster_updated")
 		current_monster.queue_free()
 		current_monster = null
@@ -123,4 +121,5 @@ func restart_game():
 	if current_monster:
 		current_monster.queue_free()
 	$Mocho.restart()
+	$AudioManager.reset()
 	start_juego()

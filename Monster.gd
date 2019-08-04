@@ -4,6 +4,7 @@ extends "res://Fighter.gd"
 var AM
 
 export (float) var reflexes = 0.95
+export (String) var monster_type
 
 var mocho_status = 0
 export (float) var min_time_to_hit = 0.2
@@ -111,13 +112,13 @@ func set_status(status):
 		STATUS.IDLE, STATUS.STUNNED:
 			$Sprite.set_frame(0)
 		STATUS.TO_HIT:
-			AM.alien_prepare()
+			AM.alien_prepare(monster_type)
 			$Sprite.set_frame(1)
 		STATUS.HIT:
-			AM.alien_attack()
+			AM.alien_attack(monster_type)
 			$Sprite.set_frame(2)
 		STATUS.DODGE:
-			AM.alien_dodge()
+			AM.alien_dodge(monster_type)
 			# trigger the dogging animation
 			randomize()
 			if randf() < 0.5:
@@ -134,6 +135,7 @@ func get_damage(damage):
 	
 	if self.damaged:
 		$Sprite.set_frame(3)
+		AM.alien_death(monster_type)
 		yield(get_tree().create_timer(0.05), "timeout")
 	else:
 		yield()

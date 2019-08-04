@@ -5,8 +5,9 @@ export (float) var cutoff
 
 func _ready():
 	MX_LPF = AudioServer.get_bus_effect(2,0)
+
+func reset():
 	MX_LPF.set_cutoff(14000)
-	
 
 func mocho_hurt():
 	$Mocho/SFX_Hurt.playsound()
@@ -30,17 +31,32 @@ func mocho_die():
 #	tween_out.interpolate_property(MX_LPF, "cutoff", 14000, 2000, 1, 1, Tween.EASE_OUT, 1)
 #	tween_out.start()
 
-func alien_prepare():
-	$Alien/SFX_Prepare.playsound()
+func alien_prepare(monster_type):
+	
+	match monster_type:
+		"Mostro":
+			$Alien/SFX_Prepare.playsound()
 	
 
-func alien_attack():
-	$Alien/SFX_Slash.playsound()
-	if randf() < 0.3:
-		$Alien/SFX_Attk.playsound()
+func alien_attack(monster_type):
+	
+	match monster_type:
+		"Mostro":
+			$Alien/SFX_Slash.playsound()
+			if randf() < 0.3:
+				$Alien/SFX_Attk.playsound()
 	
 	
-func alien_dodge():
-	if randf() < 0.2:
-		$Alien/SFX_Dodge.playsound()
-	$Alien/SFX_Move.playsound()
+func alien_dodge(monster_type):
+	
+	match monster_type:
+		"Mostro":
+			if randf() < 0.2:
+				$Alien/SFX_Dodge.playsound()
+			$Alien/SFX_Move.playsound()
+
+func alien_death(monster_type):
+	
+	match monster_type:
+		"Mostro":
+			$Alien/SFX_Death.play()
