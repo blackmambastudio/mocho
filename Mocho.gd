@@ -13,6 +13,8 @@ func set_status(status):
 			$ColorRect.self_modulate.a = 0
 			$Sprite.set_frame(0)
 			$AnimationPlayer.play("Idle")
+		STATUS.PARRY:
+			$AnimationPlayer.play("ParryHit", -1, 1.3)
 		STATUS.TO_HIT:
 			$Sprite.set_frame(3)
 		STATUS.HIT:
@@ -36,8 +38,6 @@ func get_damage(damage):
 		if not self.current_status == STATUS.BLOCK:
 			AM.mocho_hurt()
 			$AnimationPlayer.play("GetHit", -1, 2.0)
-		elif self.parried:
-			$AnimationPlayer.play("ParryHit", -1, 1.3)
 		else:
 			AM.mocho_block()
 			var Blood = block_blood.instance()

@@ -36,7 +36,6 @@ tracks/0/keys = {
 "values": [ Vector2( 300, 230 ), Vector2( 410, 230 ), Vector2( 300, 230 ) ]
 }
 
-[node name="Monster" index="0" instance=ExtResource( 1 )]
 [sub_resource type="Animation" id=3]
 resource_name = "Victory"
 tracks/0/type = "value"
@@ -52,6 +51,7 @@ tracks/0/keys = {
 "values": [ Vector2( 300, 230 ), Vector2( 300, -122 ) ]
 }
 
+[node name="Monster" index="0" instance=ExtResource( 1 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.0
