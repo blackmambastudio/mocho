@@ -12,6 +12,7 @@ time_release = 0.08
 time_to_hit = 0.38
 time_dodge = 0.1
 time_blocking = 0.1
+damage = 5
 reflexes = 0.99
 monster_type = "Milton"
 min_time_to_hit = 0.05
