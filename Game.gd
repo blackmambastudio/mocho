@@ -35,6 +35,7 @@ func on_metronome_sync_start(time):
 func new_monster():
 	current_monster = $Dungeon.next_monster()
 	add_child(current_monster)
+	move_child(current_monster, 6)
 	current_monster.connect("STATUS_UPDATED", self, "on_monster_updated")
 
 func kill_monster():
@@ -55,9 +56,6 @@ func kill_monster():
 		kills += 1
 		$Kills.text = "Kills: " + str(kills)
 		
-		yield(get_tree().create_timer(0.5), 'timeout')
-		
-		self.new_monster()
 
 # Comenté esto porque ahora el Input Map del proyecto registra la K y el clic
 # izquierdo como "hit"; y la D y el clic derecho como "block" ------------------
@@ -80,7 +78,6 @@ func on_mocho_updated(status):
 		STATUS.HIT:
 			$AudioManager/Mocho/SFX_Whoosh.play()
 			$AudioManager/Mocho/SFX_Attk.playsound()
-			pass
 			self.kill_monster()
 		STATUS.IDLE:
 			pass
@@ -102,15 +99,18 @@ func on_mocho_updated(status):
 
 func on_monster_updated(status):
 	if status == STATUS.HIT:
-		var damage = current_monster.damage
-		damage = $Mocho.update_applied_damage(damage)
-		$Mocho.get_damage(damage)
+		#var damage = current_monster.damage
+		#damage = $Mocho.update_applied_damage(damage)
+		#$Mocho.get_damage(damage)
+		current_monster.apply_damage($Mocho)
 		# Update the GUI
 		$UI.update_health($Mocho.hp)
 
 func on_metronome_note(beat, tick):
 	if current_monster:
 		current_monster.solve_next(beat, tick)
+	elif tick == 0:
+		self.new_monster()
 	
 	if tick % 4 == 0:
 		$Tempo.text = str(beat) + ': '+str(tick/4 + 1) + '/4'

@@ -5,11 +5,11 @@ onready var block_blood = preload("res://BlockBlood.tscn")
 var AM
 var stamina = 100
 
-var stm_cost_hit = -10
-var stm_cost_block = -8
-var stm_recover_hit = 12
+var stm_cost_hit = -20
+var stm_cost_block = -1
+var stm_recover_hit = 18
 var stm_recover_base = 1
-var stm_recover_parry = 40
+var stm_recover_parry = 30
 var stm_min_to_hit = 10
 var stm_limit_bad_blocking = 15
 var stm_damage_bad_blocking_factor = 2
@@ -23,12 +23,13 @@ func hit():
 
 func add_stamina(value):
 	if self.hp <= 0: return
+	
 	self.stamina += value
 	if self.stamina < stm_min_to_hit:
 		$Sprite.self_modulate.a = 0.5
 		$Sprite.set_frame(6)
 		$AnimationPlayer.stop()
-	else:
+	elif $Sprite.frame == 6 :
 		$Sprite.self_modulate.a = 1
 		$Sprite.set_frame(0)
 	if self.stamina < 0:
@@ -50,6 +51,7 @@ func update_applied_damage(damage):
 	return damage
 	
 func set_status(status):
+	print('mocho set status: ', STATUS.keys()[self.current_status])
 	match status:
 		STATUS.CANCEL:
 			self.add_stamina(-stm_cost_hit)
@@ -105,8 +107,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("hit"):
 		self.hit()
 	elif Input.is_action_just_pressed("block"):
+		print('blockkk')
 		self.block()
 	elif Input.is_action_just_released("block"):
+		print('release blockkk')
 		self.unblock()
 
 func restart():

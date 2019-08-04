@@ -177,10 +177,6 @@ margin_right = 600.0
 margin_bottom = 472.0
 mouse_filter = 2
 script = ExtResource( 2 )
-hp = 1000.0
-
-[node name="Label" parent="." index="0"]
-visible = false
 
 [node name="HP" parent="." index="1"]
 visible = false
@@ -219,7 +215,6 @@ margin_bottom = 92.9017
 text = "Stamina: 100"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="6"]
-editor/display_folded = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
 self_modulate = Color( 1, 1, 1, 0 )

@@ -52,6 +52,7 @@ func _ready():
 	$HP.text = 'HP: ' + str(self.hp)
 
 func release():
+	print('to release')
 	self.time_transition = 0
 	self.set_status(STATUS.RELEASE)
 
@@ -93,6 +94,7 @@ func _process(dt):
 		STATUS.BLOCK:
 			if self.block_released and self.time_transition >= self.time_blocking:
 				self.release()
+			
 		STATUS.STUNNED:
 			if self.time_transition >= self.time_stunned:
 				self.time_transition = 0

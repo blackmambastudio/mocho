@@ -14,10 +14,10 @@ time_dodge = 0.15
 time_blocking = 0.2
 
 [node name="Label" type="Label" parent="."]
-margin_left = 19.0452
-margin_top = 32.649
-margin_right = 108.045
-margin_bottom = 64.649
+margin_left = 217.66
+margin_top = 376.824
+margin_right = 306.66
+margin_bottom = 408.824
 text = "asdasd"
 
 [node name="HP" type="Label" parent="."]

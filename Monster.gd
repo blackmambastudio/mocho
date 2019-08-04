@@ -6,32 +6,38 @@ var AM
 export (float) var reflexes = 0.95
 
 var mocho_status = 0
+export (float) var min_time_to_hit = 0.2
+onready var original_time_to_hit = time_to_hit
 
 # times to hit
 # 0.48 - 0.4 
 # 
 #
 #
-
+var current_attack = 0
 # 0 to idle
-# 2 to be alert!
-# 1 to attack
+# 1 to be alert!
+# 2 to attack
+# 3 to second attack
+# 4 decrease time to hit
+# 5 restore time to hit
 var status_pattern = [
-	[1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
-	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
-	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
-	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
-	[1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
-	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
-	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
-	[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
+	[2,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1],
+	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+	[1,1,1,1,1,1,1,1,2,1,1,1,0,0,0,0],
+	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+	[2,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1],
+	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+	[1,1,1,1,1,1,1,1,2,1,1,1,0,0,0,0],
+	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 ]
 var mocho_dead = false
 
-onready var beats_lenght = len(status_pattern)
+var beats_lenght = 0
 onready var approaching = 0
 
 func _ready():
+	beats_lenght = len(status_pattern)
 	AM = get_node("../AudioManager")
 	$Sprite.set_scale(Vector2(0, 0))
 	self.release()
@@ -76,13 +82,26 @@ func solve_next(beat, tick):
 				self.approaching = -1
 			_:
 				return
+	
+	# 0 to idle
+	# 1 to be alert!
+	# 2 to attack
+	# 3 to second attack
+	# 4 decrease time to hit
+	# 5 restore time to hit
+
 	var action = status_pattern[beat_index][tick]
-	if action == 1:
-		self.hit()
-	elif action == 2:
-		self.check_dodge(self.reflexes)
-	elif action == 0:
+	if action == 0:
 		pass
+	elif action == 1:
+		self.check_dodge(self.reflexes)
+	elif action == 2 || action == 3:
+		current_attack = action - 2
+		self.hit()
+	elif action == 4:
+		self.time_to_hit = self.min_time_to_hit
+	elif action == 5:
+		self.time_to_hit = self.original_time_to_hit
 
 func set_status(status):
 	match status:
@@ -116,3 +135,8 @@ func get_damage(damage):
 		yield(get_tree().create_timer(0.05), "timeout")
 	else:
 		yield()
+
+func apply_damage(mocho):
+	var applied_damage = mocho.update_applied_damage(damage)
+	mocho.get_damage(applied_damage)
+	
