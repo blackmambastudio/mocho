@@ -27,11 +27,11 @@ func add_stamina(value):
 	self.stamina += value
 	if self.stamina < stm_min_to_hit:
 		$Sprite.self_modulate.a = 0.5
-		$Sprite.set_frame(6)
+		#$Sprite.set_frame(6)
 		$AnimationPlayer.stop()
-	elif $Sprite.frame == 6 :
+	else:
 		$Sprite.self_modulate.a = 1
-		$Sprite.set_frame(0)
+		#$Sprite.set_frame(0)
 	if self.stamina < 0:
 		self.stamina = 0
 	if self.stamina > 100:
@@ -58,11 +58,15 @@ func set_status(status):
 			$CanvasLayer/ColorRect.self_modulate.a = 0
 			$Sprite.set_frame(0)
 			$AnimationPlayer.play("Idle")
+			if self.stamina < stm_min_to_hit:
+				$Sprite.set_frame(6)
 		STATUS.IDLE:
 			$CanvasLayer/ColorRect.self_modulate.a = 0
 			if self.stamina >= stm_min_to_hit:
 				$Sprite.set_frame(0)
 				$AnimationPlayer.play("Idle")
+			else:
+				$Sprite.set_frame(6)
 		STATUS.PARRY:
 			self.add_stamina(stm_recover_parry)
 			AM.mocho_parry()

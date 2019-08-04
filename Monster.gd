@@ -22,13 +22,13 @@ var current_attack = 0
 # 4 decrease time to hit
 # 5 restore time to hit
 var status_pattern = [
-	[2,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1],
+	[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1],
 	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-	[1,1,1,1,1,1,1,1,2,1,1,1,0,0,0,0],
-	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-	[2,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1],
-	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-	[1,1,1,1,1,1,1,1,2,1,1,1,0,0,0,0],
+	[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+	[1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1],
 	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 ]
 var mocho_dead = false
@@ -92,8 +92,11 @@ func solve_next(beat, tick):
 
 	var action = status_pattern[beat_index][tick]
 	if action == 0:
-		pass
+		if self.current_status == STATUS.IDLE:
+			$Sprite.set_frame(4)
 	elif action == 1:
+		if self.current_status == STATUS.IDLE:
+			$Sprite.set_frame(0)
 		self.check_dodge(self.reflexes)
 	elif action == 2 || action == 3:
 		current_attack = action - 2
