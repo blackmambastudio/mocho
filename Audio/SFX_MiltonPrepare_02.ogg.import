@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_MiltonPrepare_02.ogg-4e930bee18f77bbc3ae0565693fc0c5b.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX_MiltonPrepare_02.ogg"
+dest_files=[ "res://.import/SFX_MiltonPrepare_02.ogg-4e930bee18f77bbc3ae0565693fc0c5b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
