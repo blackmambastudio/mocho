@@ -49,7 +49,7 @@ func kill_monster():
 		kills += 1
 		$Kills.text = "Kills: " + str(kills)
 		
-		yield(get_tree().create_timer(2), 'timeout')
+		yield(get_tree().create_timer(0.5), 'timeout')
 		
 		self.new_monster()
 

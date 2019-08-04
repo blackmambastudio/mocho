@@ -45,8 +45,12 @@ func set_mocho_status(mocho_status):
 			$AnimationPlayer.play("Victory")
 
 func check_dodge(chance):
+	
+	if current_status == STATUS.TO_DODGE and self.mocho_status == STATUS.CANCEL:
+		self.set_status(STATUS.DODGE)
+		return
 	if current_status != STATUS.IDLE: return
-	if self.mocho_status != STATUS.TO_HIT and self.mocho_status != STATUS.CANCEL : return
+	if self.mocho_status != STATUS.TO_HIT: return
 	var value = randf()
 	print("to dodge ", value)
 	if chance > value:
@@ -64,13 +68,13 @@ func solve_next(beat, tick):
 			1:
 				$Sprite.set_scale(Vector2(0.3, 0.3))
 				return
-			17:
+			5:
 				$Sprite.set_scale(Vector2(0.7, 0.7))
 				return
-			33:
+			9:
 				$Sprite.set_scale(Vector2(1.2, 1.2))
 				return
-			41:
+			13:
 				self.approaching = -1
 			_:
 				return
