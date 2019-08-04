@@ -106,6 +106,7 @@ margin_bottom = 40.0
 
 [node name="SFX_Whoosh" type="AudioStreamPlayer" parent="AudioManager/Mocho"]
 stream = ExtResource( 7 )
+volume_db = -4.0
 
 [node name="SFX_Attk" parent="AudioManager/Mocho" instance=ExtResource( 8 )]
 editor/display_folded = true
