@@ -8,14 +8,14 @@ extends "res://Monster.gd"
 # 5 restore time to hit
 func _ready():
 	status_pattern = [
-		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,4,0,0,3,5,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 		[1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1],
 		[1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1],
 		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0]
+		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0],
+		[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,4,0,0,3,5,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 	]
 	beats_lenght = len(status_pattern)
 
@@ -30,9 +30,9 @@ func set_status(status):
 
 func apply_damage(mocho):
 	if self.current_attack == 1:
-		var reduced_stamina = -20
+		var reduced_stamina = -15
 		if mocho.current_status == STATUS.BLOCK:
-			reduced_stamina = -5
+			reduced_stamina = -1
 		mocho.add_stamina(reduced_stamina)
 	else:
 		.apply_damage(mocho)

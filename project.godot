@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="mocho"
 run/main_scene="res://Game.tscn"
+boot_splash/image="res://Assets/mocho_insta.png"
 config/icon="res://icon.png"
 
 [debug]

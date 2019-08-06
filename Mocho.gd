@@ -7,7 +7,7 @@ var stamina = 100
 
 var stm_cost_hit = -20
 var stm_cost_block = -1
-var stm_recover_hit = 18
+var stm_recover_hit = 25
 var stm_recover_base = 1
 var stm_recover_parry = 30
 var stm_min_to_hit = 10
@@ -43,13 +43,16 @@ func add_stamina(value):
 	$Stamina.text = 'Stamina: '+str(self.stamina)
 
 func recover_stamina():
-	self.add_stamina(stm_recover_base)
+	var recovered = stm_recover_base
+	if current_status == STATUS.BLOCK:
+		recovered = recovered * 2
+	self.add_stamina(recovered)
 
 func recover_stamina_by_kill():
 	self.add_stamina(stm_recover_hit)
 	if self.parried:
 		self.parried = false
-		self.hp += 10
+		self.hp += 15
 	else:
 		self.hp += 2
 	if self.hp > 100:
@@ -61,7 +64,8 @@ func update_applied_damage(damage):
 	return damage
 	
 func set_status(status):
-	print('mocho set status: ', STATUS.keys()[self.current_status])
+	if hp <= 0:
+		status = STATUS.DEAD
 	match status:
 		STATUS.CANCEL:
 			self.add_stamina(-stm_cost_hit)
@@ -90,7 +94,6 @@ func set_status(status):
 		STATUS.BLOCK:
 			AM.mocho_defend()
 			$Sprite.set_frame(2)
-			print(self.time_blocking)
 		STATUS.TO_BLOCK:
 			$AnimationPlayer.stop()
 			$Sprite.set_frame(1)
@@ -123,10 +126,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("hit"):
 		self.hit()
 	elif Input.is_action_just_pressed("block"):
-		print('blockkk')
 		self.block()
 	elif Input.is_action_just_released("block"):
-		print('release blockkk')
 		self.unblock()
 
 func restart():

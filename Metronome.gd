@@ -21,7 +21,6 @@ var playing = false
 func _ready():
 	beat_interval = 60 / bpm * 4 / float(time_signature_botton)
 	sixteenth_time = beat_interval/16
-	print (current_time, " time to sixteenth: ", sixteenth_time)
 
 func _process(delta):
 	if !playing: return

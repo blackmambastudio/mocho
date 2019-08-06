@@ -28,8 +28,10 @@ func start_juego():
 	$Mocho.add_stamina(100)
 	$UI.update_stamina(100)
 	$UI.update_kills(0)
+	$Dungeon.reset_stats()
+	kills = 0
 	self.new_monster()
-	yield(get_tree().create_timer(2), 'timeout')
+	yield(get_tree().create_timer(0.8), 'timeout')
 	$Metronome.start()
 
 func on_metronome_sync_start(time):

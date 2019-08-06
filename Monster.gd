@@ -43,6 +43,11 @@ func _ready():
 	$Sprite.set_scale(Vector2(0, 0))
 	self.release()
 
+func set_difficult(speed_factor, damage_factor):
+	self.time_to_hit = self.time_to_hit*speed_factor
+	self.damage = self.damage*damage_factor
+	self.original_time_to_hit = self.time_to_hit
+
 func set_mocho_status(mocho_status):
 	self.mocho_status = mocho_status
 	match self.mocho_status:
@@ -57,9 +62,7 @@ func check_dodge(chance):
 	if current_status != STATUS.IDLE: return
 	if self.mocho_status != STATUS.TO_HIT: return
 	var value = randf()
-	print("to dodge ", value)
 	if chance > value:
-		print("should dodge ")
 		self.set_status(STATUS.TO_DODGE)
 
 func solve_next(beat, tick):

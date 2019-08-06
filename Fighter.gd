@@ -40,7 +40,6 @@ func hit():
 
 func block():
 	if self.current_status == STATUS.TO_HIT:
-		print('cancel')
 		self.time_transition = 0
 		self.set_status(STATUS.CANCEL)
 		return
@@ -52,7 +51,6 @@ func _ready():
 	$HP.text = 'HP: ' + str(self.hp)
 
 func release():
-	print('to release')
 	self.time_transition = 0
 	self.set_status(STATUS.RELEASE)
 
@@ -114,7 +112,6 @@ func get_damage(damage):
 		damage = damage*0.1
 		if self.block_released:
 			parried = true
-			print('parry!!!!!')
 			self.time_transition -= 0.2
 			self.set_status(STATUS.PARRY)
 			return
@@ -128,7 +125,6 @@ func get_damage(damage):
 	damaged = true
 	$HP.text = 'HP: ' + str(self.hp)
 	if self.hp <= 0:
-		print('dead!!!')
 		set_status(STATUS.DEAD)
 	elif self.current_status != STATUS.BLOCK:
 		self.time_transition = 0
